@@ -14,7 +14,7 @@
 	<name>Prestamos_Grupo7</name>
 	<description>Proyecto Grupo 7</description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
