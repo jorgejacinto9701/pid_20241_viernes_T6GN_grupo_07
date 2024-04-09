@@ -1,4 +1,4 @@
-package com.prestamos.service;
+package com.prestamos.demo.service;
 
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.prestamos.entity.Rol;
-import com.prestamos.entity.Usuarios;
-import com.prestamos.repository.UsuariosRepository;
+import com.prestamos.demo.entity.Rol;
+import com.prestamos.demo.entity.Usuarios;
+import com.prestamos.demo.repository.UsuariosRepository;
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {

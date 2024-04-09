@@ -1,4 +1,4 @@
-package com.prestamos.entity;
+package com.prestamos.demo.entity;
 
 import java.util.Collection;
 import java.util.Date;

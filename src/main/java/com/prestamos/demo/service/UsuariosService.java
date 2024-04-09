@@ -1,8 +1,8 @@
-package com.prestamos.service;
+package com.prestamos.demo.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.prestamos.entity.Usuarios;
+import com.prestamos.demo.entity.Usuarios;
 
 public interface UsuariosService extends UserDetailsService{
 	
