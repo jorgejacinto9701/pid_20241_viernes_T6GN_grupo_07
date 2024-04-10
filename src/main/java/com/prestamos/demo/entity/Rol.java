@@ -1,12 +1,28 @@
 package com.prestamos.demo.entity;
 
+import java.util.Collection;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.*;
 
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name ="rol")
 public class Rol {
@@ -16,28 +32,16 @@ public class Rol {
 	private int id_rol;
 	
 	@Column(name = "nombre_rol")
-	private String nombre_rol;
+	@Enumerated(EnumType.STRING)
+	private RolName nombre_rol;
 
-	public int getId_rol() {
-		return id_rol;
-	}
-
-	public void setId_rol(int id_rol) {
-		this.id_rol = id_rol;
-	}
-
-	public String getNombre_rol() {
-		return nombre_rol;
-	}
-
-	public void setNombre_rol(String nombre_rol) {
-		this.nombre_rol = nombre_rol;
-	}
-
-	public Rol(String nombre_rol) {
-		super();
-		this.nombre_rol = nombre_rol;
-	}
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(
+			name="rol_permiso",
+			joinColumns = @JoinColumn(name = "rol_id", referencedColumnName ="id_rol"),
+			inverseJoinColumns = @JoinColumn(name = "permiso_id", referencedColumnName = "id_permiso")
+			)
+    private Set<Permisos> permisos;
 	
 	
 
