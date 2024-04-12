@@ -43,17 +43,17 @@ public class PrestamosGrupo7Application {
 					.build();
 			
 			Rol rolInversionista = Rol.builder()
-					.nombre_rol(RolName.ROL_INVERSIONISTA)
+					.nombreRol(RolName.ROL_INVERSIONISTA)
 					.permisos(Set.of(crudJefePrestamista))
 					.build();
 			
 			Rol rolJefePrestamista = Rol.builder()
-					.nombre_rol(RolName.ROL_JEFE_PRESTAMISTA)
+					.nombreRol(RolName.ROL_JEFE_PRESTAMISTA)
 					.permisos(Set.of(crudPrestamista))
 					.build();
 			
 			Rol rolPrestamista = Rol.builder()
-					.nombre_rol(RolName.ROL_PRESTAMISTA)
+					.nombreRol(RolName.ROL_PRESTAMISTA)
 					.permisos(Set.of(crudPrestatario))
 					.build();
 			

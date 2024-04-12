@@ -9,34 +9,34 @@
 <body>
 	<div class="container">
 	        <h2 class="mt-5">Registra un Jefe de Prestamistas</h2>
-	        <form action="" method="post">
+	        <form action="/registro/jefePrestamista" method="post" id="registroForm">
 	            <div class="mb-3">
-	                <label for="nombre" class="form-label">Nombre:</label>
-	                <input type="text" class="form-control" id="nombre" name="nombre" required>
+	                <label for="nombre_jp" class="form-label">Nombre:</label>
+	                <input type="text" class="form-control" id="nombre_jp" name="nombre_jp" required>
 	            </div>
 	            <div class="mb-3">
-	                <label for="apellido" class="form-label">Apellido:</label>
-	                <input type="text" class="form-control" id="apellido" name="apellido" required>
+	                <label for="apellido_jp" class="form-label">Apellido:</label>
+	                <input type="text" class="form-control" id="apellido_jp" name="apellido_jp" required>
 	            </div>
 	            <div class="mb-3">
-	                <label for="correo" class="form-label">Correo electrónico:</label>
-	                <input type="email" class="form-control" id="correo" name="correo" required>
+	                <label for="correo_jp" class="form-label">Correo electrónico:</label>
+	                <input type="email" class="form-control" id="correo_jp" name="correo_jp" required>
 	            </div>
 				<div class="mb-3">
-					  <label for="dni" class="form-label">Dni:</label>
-					  <input type="number" class="form-control" id="dni" name="dni" required>
+					  <label for="dni_jp" class="form-label">Dni:</label>
+					  <input type="number" class="form-control" id="dni_jp" name="dni_jp" required>
 				</div>
 	            <div class="mb-3">
-	                <label for="telefono" class="form-label">Teléfono:</label>
-	                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+	                <label for="telefono_jp" class="form-label">Teléfono:</label>
+	                <input type="tel" class="form-control" id="telefono_jp" name="telefono_jp" required>
 	            </div>
 				<div class="mb-3">
-					 <label for="contrasenia" class="form-label">Nuevo Paswword:</label>
-					<input type="text" class="form-control" id="contrasenia" name="contrasenia" required>
+					 <label for="contrasenia_jp" class="form-label">Nuevo Paswword:</label>
+					<input type="text" class="form-control" id="contrasenia_jp" name="contrasenia_jp" required>
 				</div>
 				<div class="mb-4">
-					<label for="nacimiento" class="form-label">Fecha de Nacimiento:</label>
-					<input type="date" class="form-control" id="nacimiento" name="nacimiento" required>
+					<label for="nacimiento_jp" class="form-label">Fecha de Nacimiento:</label>
+					<input type="date" class="form-control" id="nacimiento_jp" name="nacimiento_jp" required>
 				</div>
 				<div class="mb-3">
 				    <label for="id_distrito" class="form-label">Distrito a Cargo:</label>
@@ -44,7 +44,7 @@
 				        <option value="">[Seleccione]</option>
 				    </select>
 				</div>
-	            
+				<button type="submit" class="btn btn-primary">Registrar</button>
 	        </form>
 	    </div>
     </form>
@@ -57,6 +57,51 @@
 	            });
 	        }).fail(function(jqXHR, textStatus, errorThrown) {
 	            console.error("Error al cargar los distritos: " + textStatus, errorThrown);
+	        });
+	    });
+	</script>
+	<script>
+	    $(document).ready(function() {
+			
+			function formatearFecha(fecha) {
+			            var partes = fecha.split('/');
+			            return partes[2] + '-' + partes[1] + '-' + partes[0];
+			        }
+			
+	        $('#registroForm').submit(function(event) {
+	            // Evitar que se envíe el formulario de manera predeterminada
+	            event.preventDefault();
+
+	            // Obtener los datos del formulario
+	            var formData = {
+	                nombre_jp: $('#nombre_jp').val(),
+					apellido_jp: $('#apellido_jp').val(),
+					correo_jp: $('#correo_jp').val(),
+					dni_jp: $('#dni_jp').val(),
+					telefono_jp: $('#telefono_jp').val(),
+					contrasenia_jp: $('#contrasenia_jp').val(),
+					nacimiento_jp: $('#nacimiento_jp').val(),
+					id_distrito: $('#id_distrito').val(),
+	            };
+				
+				console.log(formData);
+	
+	            // Enviar los datos del formulario al backend
+	            $.ajax({
+	                type: 'POST',
+	                url: '/registro/jefePrestamista',
+	                data: JSON.stringify(formData),
+	                contentType: 'application/json',
+	                success: function(response) {
+	                    // Manejar la respuesta del backend, por ejemplo, mostrar un mensaje de éxito
+	                    alert('Jefe de Prestamistas registrado correctamente');
+	                },
+	                error: function(xhr, status, error) {
+	                    // Manejar errores, por ejemplo, mostrar un mensaje de error
+	                    alert('Error al registrar el Jefe de Prestamistas');
+	                    console.error(xhr.responseText);
+	                }
+	            });
 	        });
 	    });
 	</script>
