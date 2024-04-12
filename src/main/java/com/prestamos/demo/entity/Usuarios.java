@@ -2,6 +2,7 @@ package com.prestamos.demo.entity;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -52,8 +53,7 @@ public class Usuarios {
 			inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
 			)
     private Collection <Rol> roles;
-    
-    
+	   
 	public Usuarios(String nombre, String apellido, String correo, String dni, String telefono, String contrasenia,
 			Date nacimiento, Collection<Rol> roles) {
 		super();
