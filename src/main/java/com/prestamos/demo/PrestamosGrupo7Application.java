@@ -84,7 +84,20 @@ public class PrestamosGrupo7Application {
 					.roles(Set.of(rolInversionista))
 					.build();
 			
-			repo.saveAll(List.of(userInversionista, userInversionista2));
+			
+			Usuarios UserJefePrestamista = Usuarios.builder()
+					.nombre("pablo")
+					.apellido("Ramirez")
+					.correo("pablo17@gmail.com")
+					.dni("76546541")
+					.telefono("932654789")
+					.contrasenia("pablo1234")
+					.nacimiento(fecha2)		
+					.roles(Set.of(rolJefePrestamista))
+					.build();
+			
+			
+			repo.saveAll(List.of(userInversionista, userInversionista2,UserJefePrestamista));
 		};
 	}
 }

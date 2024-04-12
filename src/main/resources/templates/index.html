@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Sistemas de prestamo</title>
-	</head>
-	<body>
-		<h1>Hola</h1>
-	</body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<title>RAPIPRESTAMOS</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<style>
+		form .invalid-feedback {
+			display: block;
+		}
+			body {
+			background-image: url('/img/fondo.png'); /* Reemplaza con la ruta correcta a tu imagen */
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed; /* Fija la imagen de fondo */
+		}
+	</style>
+	<style>
+		.imagen {
+			width: 10%;
+			height: auto;
+		}
+	</style>
+	
+</head>
+
+<body>
+		<div layout:fragment="scripts" th:remove="tag">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">
+				<img th:src="@{/img/logo.png}" alt="mi imagen" class="imagen">
+				RAPIPRESTAMOS
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="/">INICIO</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/registro">JEFES PRESTAMISTAS</a>
+					</li>
+					<li sec:authorize="hasRole('ROL_JEFE_PRESTAMISTA')" class="nav-item">
+                        <a class="nav-link" href="/registro/insertar/prestamista">PRESTAMISTAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registro/insertar/usuario">PRESTATARIOS</a>
+                    </li>
+				</ul>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+
+	<div layout:fragment="content" class="container my-5">
+
+
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.js"
+		integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+		
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<script src="funciones.js"></script>
+	<script src="funcionS.js"></script>
+	
+	
+	
+
+	</div>
+
+</body>
+
 </html>
