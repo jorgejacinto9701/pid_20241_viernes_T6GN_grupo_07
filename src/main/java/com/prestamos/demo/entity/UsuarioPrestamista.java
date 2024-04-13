@@ -22,21 +22,21 @@ public class UsuarioPrestamista {
 
 	    @ManyToOne
 	    @JoinColumn(name = "usuario_id")
-	    private Usuarios usuario;
+	    private Usuarios usuario_p;
 
 	    @ManyToOne
 	    @JoinColumn(name = "rol_id")
-	    private Rol rol;
+	    private Rol rol_p;
 	    
 	    @Column(name = "zona")
-	    private String zona;
+	    private String zona_p;
 
 		public UsuarioPrestamista(Long id, Usuarios usuario, Rol rol, String zona) {
 			super();
 			this.id = id;
-			this.usuario = usuario;
-			this.rol = rol;
-			this.zona = zona;
+			this.usuario_p = usuario;
+			this.rol_p = rol;
+			this.zona_p = zona;
 		}
 	    
 }

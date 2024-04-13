@@ -9,6 +9,6 @@ public class LoginController {
 
     @GetMapping("/login2")
     public String login() {
-        return "login"; // Esto debe coincidir con el nombre de tu archivo HTML del formulario de inicio de sesión
+        return "/registro"; // Esto debe coincidir con el nombre de tu archivo HTML del formulario de inicio de sesión
     }
 }
