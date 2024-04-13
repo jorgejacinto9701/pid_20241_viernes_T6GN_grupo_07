@@ -43,17 +43,17 @@ public class PrestamosGrupo7Application {
 					.build();
 			
 			Rol rolInversionista = Rol.builder()
-					.nombre_rol(RolName.ROL_INVERSIONISTA)
+					.nombreRol(RolName.ROL_INVERSIONISTA)
 					.permisos(Set.of(crudJefePrestamista))
 					.build();
 			
 			Rol rolJefePrestamista = Rol.builder()
-					.nombre_rol(RolName.ROL_JEFE_PRESTAMISTA)
+					.nombreRol(RolName.ROL_JEFE_PRESTAMISTA)
 					.permisos(Set.of(crudPrestamista))
 					.build();
 			
 			Rol rolPrestamista = Rol.builder()
-					.nombre_rol(RolName.ROL_PRESTAMISTA)
+					.nombreRol(RolName.ROL_PRESTAMISTA)
 					.permisos(Set.of(crudPrestatario))
 					.build();
 			
@@ -84,7 +84,20 @@ public class PrestamosGrupo7Application {
 					.roles(Set.of(rolInversionista))
 					.build();
 			
-			repo.saveAll(List.of(userInversionista, userInversionista2));
+			
+			Usuarios UserJefePrestamista = Usuarios.builder()
+					.nombre("pablo")
+					.apellido("Ramirez")
+					.correo("pablo17@gmail.com")
+					.dni("76546541")
+					.telefono("932654789")
+					.contrasenia("pablo1234")
+					.nacimiento(fecha2)		
+					.roles(Set.of(rolJefePrestamista))
+					.build();
+			
+			
+			repo.saveAll(List.of(userInversionista, userInversionista2,UserJefePrestamista));
 		};
 	}
 }

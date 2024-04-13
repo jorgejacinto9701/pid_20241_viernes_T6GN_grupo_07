@@ -26,16 +26,16 @@ public class UsuariosServiceImpl implements UsuariosService {
 	private UsuariosRepository repo;
 
 	@Override
-	public Usuarios newUsuarioJP(Usuarios obj) {
+	public Usuarios newUsuarioJP(Usuarios objUsu) {
 	    Rol rolJefePrestamista = new Rol();
-	    rolJefePrestamista.setNombre_rol(RolName.ROL_JEFE_PRESTAMISTA);
+	    rolJefePrestamista.setNombreRol(RolName.ROL_JEFE_PRESTAMISTA);
 	    
 	    // Establecer los roles del usuario
-	    obj.setRoles(Collections.singletonList(rolJefePrestamista));
+	    objUsu.setRoles(Collections.singletonList(rolJefePrestamista));
 	    
 	    // Crear el nuevo usuario
-	    Usuarios usu = new Usuarios(obj.getNombre(), obj.getApellido(), obj.getCorreo(),
-	            obj.getDni(), obj.getTelefono(), obj.getContrasenia(), obj.getNacimiento(), obj.getRoles());
+	    Usuarios usu = new Usuarios(objUsu.getNombre(), objUsu.getApellido(), objUsu.getCorreo(),
+	            objUsu.getDni(), objUsu.getTelefono(), objUsu.getContrasenia(), objUsu.getNacimiento(), objUsu.getRoles());
 	    
 	    return repo.save(usu);
 	}
@@ -47,7 +47,7 @@ public class UsuariosServiceImpl implements UsuariosService {
 		List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 		
 		user.getRoles()
-				.forEach(role -> authorityList.add(new SimpleGrantedAuthority("ROLE_".concat(role.getNombre_rol().name()))));
+				.forEach(role -> authorityList.add(new SimpleGrantedAuthority("ROLE_".concat(role.getNombreRol().name()))));
 		
 		user.getRoles().stream()
 		.flatMap(role -> role.getPermisos().stream())

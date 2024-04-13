@@ -33,7 +33,7 @@ public class Rol {
 	
 	@Column(name = "nombre_rol")
 	@Enumerated(EnumType.STRING)
-	private RolName nombre_rol;
+	private RolName nombreRol;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(

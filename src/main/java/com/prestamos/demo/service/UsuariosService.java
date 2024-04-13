@@ -6,5 +6,5 @@ import com.prestamos.demo.entity.Usuarios;
 
 public interface UsuariosService extends UserDetailsService{
 	
-	public Usuarios newUsuarioJP(Usuarios obj);
+	public Usuarios newUsuarioJP(Usuarios objUsu);
 }
