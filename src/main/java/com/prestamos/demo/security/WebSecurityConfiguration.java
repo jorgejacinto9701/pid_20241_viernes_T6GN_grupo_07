@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.prestamos.demo.service.UsuariosService;
 import com.prestamos.demo.service.UsuariosServiceImpl;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -38,15 +39,21 @@ public class WebSecurityConfiguration {
 		auth.authenticationProvider(authenticationProvider());
 	}*/
 	
+    @Bean
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http
-                .csrf(csrf -> csrf.disable())
-                .httpBasic(basic -> basic.disable())
-                .formLogin(formLogin -> formLogin
-                		.loginPage("/login") // Aquí especificas la ruta de tu formulario personalizado
-                        .permitAll())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .build();
+		http.authorizeHttpRequests((authorize)-> authorize
+				.anyRequest().authenticated()
+				)
+				.httpBasic(withDefaults())
+				.formLogin(form -> form
+					.loginPage("/loggin")
+					.loginProcessingUrl("/logginproccess")
+						.permitAll()
+						);
+				
+				
+              
+              return http.build();
 	}
 	
 

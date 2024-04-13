@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <h1>Regístrate</h1>
-        <form action="#" th:action="@{/login2}" method="post">
+        <form  th:action="@{/logginproccess}" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Correo:</label>
-                <input type="email" class="form-control" id="username" th:field="*{correo}" required>
+                <input name="username"  type="email" class="form-control" id="username" th:field="*{correo}" required>
             </div>
             <div class="mb-3">
                 <label for="contrasenia" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" id="contrasenia" th:field="*{contrasenia}" required>
+                <input name="password" type="password" class="form-control" id="contrasenia" th:field="*{contrasenia}" required>
             </div>
             <input type="submit" class="btn btn-primary" value="login">Iniciar Sesion</input>
         </form>
