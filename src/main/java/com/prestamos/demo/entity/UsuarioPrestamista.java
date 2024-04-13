@@ -38,5 +38,4 @@ public class UsuarioPrestamista {
 			this.rol_p = rol;
 			this.zona_p = zona;
 		}
-	    
 }

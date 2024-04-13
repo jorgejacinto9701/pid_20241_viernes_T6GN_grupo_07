@@ -11,15 +11,15 @@
 	        <h2 class="mt-5">Registrar Prestamista</h2>
 	        <form action="/registro/UsuarioPrestamista" method="post" id="registroForm">
 	            <div class="mb-3">
-	                <label for="nombre_jp" class="form-label">Usuario:</label>
+	                <label for="usuario_p" class="form-label">Usuario:</label>
 	                <input type="text" class="form-control" id="usuario_p" name="usuario_p" required>
 	            </div>
 	            <div class="mb-3">
-	                <label for="apellido_jp" class="form-label">Rol:</label>
+	                <label for="rol_p" class="form-label">Rol:</label>
 	                <input type="text" class="form-control" id="rol_p" name="rol_p" required>
 	            </div>
 	            <div class="mb-3">
-	                <label for="correo_jp" class="form-label">Zona:</label>
+	                <label for="zona_p" class="form-label">Zona:</label>
 	                <input type="email" class="form-control" id="zona_p" name="zona_p" required>
 	            </div>
 				<button type="submit" class="btn btn-primary">Registrar</button>
@@ -28,33 +28,6 @@
     </form>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
-	</script>
-	<script>
-	    $(document).ready(function() {
-	        $('#registroForm').submit(function(event) {
-	            event.preventDefault();
-
-	            var formData = {
-	                nombre_jp: $('#usuario').val(),
-					apellido_jp: $('rol').val(),
-					correo_jp: $('zona').val(),
-	            };
-				console.log(formData);
-	            $.ajax({
-	                type: 'POST',
-	                url: '/registro/UsuarioPrestamista',
-	                data: JSON.stringify(formData),
-	                contentType: 'application/json',
-	                success: function(response) {
-	                    alert('Registraro correctamente');
-	                },
-	                error: function(xhr, status, error) {
-	                    alert('Error al registrar');
-	                    console.error(xhr.responseText);
-	                }
-	            });
-	        });
-	    });
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 	        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
