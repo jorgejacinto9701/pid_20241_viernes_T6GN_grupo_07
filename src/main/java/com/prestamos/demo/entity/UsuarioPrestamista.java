@@ -1,7 +1,5 @@
 package com.prestamos.demo.entity;
 
-import java.util.Collection;
-import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,6 +39,5 @@ public class UsuarioPrestamista {
 			this.rol = rol;
 			this.zona = zona;
 		}
-
 	    
 }
