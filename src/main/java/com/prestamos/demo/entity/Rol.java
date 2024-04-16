@@ -29,20 +29,14 @@ public class Rol {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_rol;
-	
-	@Column(name = "nombre_rol")
-	@Enumerated(EnumType.STRING)
-	private RolName nombreRol;
+	private int id;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(
-			name="rol_permiso",
-			joinColumns = @JoinColumn(name = "rol_id", referencedColumnName ="id_rol"),
-			inverseJoinColumns = @JoinColumn(name = "permiso_id", referencedColumnName = "id_permiso")
-			)
-    private Set<Permisos> permisos;
-	
+	private String nombreRol;
+
+	public Rol(String nombreRol) {
+		super();
+		this.nombreRol = nombreRol;
+	}
 	
 
 	

@@ -20,9 +20,9 @@ public class Usuarios {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_usuario; 
+	private int id; 
 	
-	@Column(name="nombres")
+	@Column(name="nombre")
 	private String nombre;
 	
 	@Column(name="apellido")
@@ -46,16 +46,24 @@ public class Usuarios {
     @Temporal(TemporalType.DATE)
     private Date nacimiento;
 	
+	@ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuarios idUsuario;
+
+    @ManyToOne
+    @JoinColumn(name = "distrito_id")
+    private Distrito distrito;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
-			name="usuarios_rol",
-			joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName ="id_usuario"),
-			inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
+			name="usuario_rol",
+			joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName ="id"),
+			inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id")
 			)
     private Collection <Rol> roles;
-	   
+
 	public Usuarios(String nombre, String apellido, String correo, String dni, String telefono, String contrasenia,
-			Date nacimiento, Collection<Rol> roles) {
+			Date nacimiento, Usuarios idUsuario, Distrito distrito, Collection<Rol> roles) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -64,6 +72,8 @@ public class Usuarios {
 		this.telefono = telefono;
 		this.contrasenia = contrasenia;
 		this.nacimiento = nacimiento;
+		this.idUsuario = idUsuario;
+		this.distrito = distrito;
 		this.roles = roles;
 	}
     
