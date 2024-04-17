@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.prestamos.demo.entity.Distrito;
-import com.prestamos.demo.entity.JefePrestamista;
+
 import com.prestamos.demo.entity.Usuarios;
 import com.prestamos.demo.repository.UsuariosRepository;
 import com.prestamos.demo.service.DistritoService;
-import com.prestamos.demo.service.JefePrestamistaService;
+
 import com.prestamos.demo.service.UsuariosService;
 
 @Controller
@@ -36,7 +36,7 @@ public class UsuariosController {
     
 
     @Autowired
-    private JefePrestamistaService jefePrestamistaService;
+    private JefePrestamistaController jefePrestamistaService;
 
     
     @Autowired
@@ -63,7 +63,11 @@ public class UsuariosController {
         return "registro";
     }
     
-    @PostMapping("/jefePrestamista") // Cambia la anotación de GetMapping a PostMapping
+   
+    
+    
+    /*
+     *  @PostMapping("/jefePrestamista") // Cambia la anotación de GetMapping a PostMapping
     @PreAuthorize("hasAuthority('ROL_INVERSIONISTA')")
     public String registrarJP(@ModelAttribute("usuarios") JefePrestamista jefePrestamista) {
         // Obteniendo el correo del usuario actual (esto puede variar dependiendo de cómo manejes la autenticación)
@@ -75,7 +79,16 @@ public class UsuariosController {
         
         return "redirect:/registro?exito"; // Redirige a donde sea necesario después de registrar
     }
-    
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * */
     /*@PostMapping
     public String registrarUsuario(@ModelAttribute("usuarios") Usuarios registro) {
         service.newUsuarioJP(registro);
