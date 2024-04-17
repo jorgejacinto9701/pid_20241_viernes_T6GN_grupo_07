@@ -73,7 +73,7 @@
 		<!-- Fin de mensaje -->
 		<h2 class="mt-5">Actualiza al Jefe Prestamista!</h2>
 		<br>
-		<form th:action="@{/editarJefePrestamista/{id}(id=${usuarioJP.id})}" th:object="${usuarioJP}" method="post" id="registroForm">
+		<form th:action="@{/JefePrestamista/editarJefePrestamista/{id}(id=${usuarioJP.id})}" th:object="${usuarioJP}" method="post" id="registroForm">
 			<div class="row">
 				<div class="col-6">
 	                <label for="nombre" class="form-label">Nombre:</label>
@@ -99,10 +99,6 @@
 	            </div>
 			</div>
 			<div class="row">
-				<div class="col-6">
-					 <label for="contrasenia" class="form-label">Nuevo Paswword:</label>
-					<input type="text" class="form-control" id="contrasenia" name="contrasenia" th:field="*{contrasenia}" required>
-				</div>
 				<div class="col-6">
 					<label for="nacimiento" class="form-label">Fecha de Nacimiento:</label>
 					<input type="date" class="form-control" id="nacimiento" name="nacimiento" th:field="*{nacimiento}" required>

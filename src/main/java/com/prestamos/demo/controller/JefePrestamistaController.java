@@ -117,43 +117,31 @@ public class JefePrestamistaController {
 	 }
 	 
 	 @PostMapping("/editarJefePrestamista/{id}")
-	 public String actualizarUsuario(Integer id, @ModelAttribute("usuarioJP") Usuarios usuario, Model model) {
-		 Usuarios usuarioExiste = ususerv.obtenerId(id);
-		 usuarioExiste.setId(id);
-		 if (usuario.getNombre() != null) {
-		        usuarioExiste.setNombre(usuario.getNombre());
-		    }		    
-		    if (usuario.getApellido() != null) {
-		        usuarioExiste.setApellido(usuario.getApellido());
-		    }		    
-		    if (usuario.getCorreo() != null) {
-		        usuarioExiste.setCorreo(usuario.getCorreo());
-		    }		    
-		    if (usuario.getDni()!= null) {
-		    	usuarioExiste.setDni(usuario.getDni());
+	 public String actualizarUsuario(@PathVariable("id") int id, @ModelAttribute("usuarioJP") Usuarios usuario, Model model) {
+		    Usuarios usuarioExistente = ususerv.obtenerId(id); // Obtener el usuario existente de la base de datos
+		    if (usuarioExistente != null) {
+		        // Actualizar los campos del usuario existente con los valores del formulario
+		        usuarioExistente.setNombre(usuario.getNombre());
+		        usuarioExistente.setApellido(usuario.getApellido());
+		        usuarioExistente.setCorreo(usuario.getCorreo());
+		        usuarioExistente.setDni(usuario.getDni());
+		        usuarioExistente.setTelefono(usuario.getTelefono());
+		        usuarioExistente.setContrasenia(usuario.getContrasenia());
+		        usuarioExistente.setNacimiento(usuario.getNacimiento());
+		        // Actualizar otras propiedades si es necesario (por ejemplo, idUsuario y distrito)
+
+		        // Guardar el usuario actualizado en la base de datos
+		        ususerv.updateUsuario(usuarioExistente);
+
+		        // Redirigir a la página de éxito
+		        return "redirect:/JefePrestamista/editarJefePrestamista/" + id + "?success";
+		    } else {
+		        // Manejar el caso en el que no se encuentre el usuario
+		        // Por ejemplo, puedes redirigir a una página de error o mostrar un mensaje de error
+		        return "error";
 		    }
-		    if (usuario.getTelefono()!= null) {
-		    	usuarioExiste.setTelefono(usuario.getTelefono());
-		    }
-		    if (usuario.getContrasenia()!= null) {
-		    	usuarioExiste.setContrasenia(usuario.getContrasenia());
-		    }
-		    if(usuario.getNacimiento()!=null) {
-		    	usuarioExiste.setNacimiento(usuario.getNacimiento());
-		    }
-		    if(usuario.getIdUsuario() != null) {
-		    	usuarioExiste.setIdUsuario(usuario.getIdUsuario());
-		    }
-		    if(usuario.getDistrito() != null) {
-		    	usuarioExiste.setDistrito(usuario.getDistrito());
-		    }
-		    
-		    ususerv.updateUsuario(usuarioExiste);
-		    
-		 return "redirect:/JefePrestamista/editarJefePrestamista?success";
-	 }
+		}
 	 
-	 //delete nivel coquito gpt
 	 @GetMapping("/eliminarJefePrestamista/{id}")
 	 public String eliminarJefePrestamista(@PathVariable("id") int id, RedirectAttributes flash) {
 		 
