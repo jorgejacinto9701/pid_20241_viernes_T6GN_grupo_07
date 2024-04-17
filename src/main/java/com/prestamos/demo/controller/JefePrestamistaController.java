@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.prestamos.demo.entity.Distrito;
 import com.prestamos.demo.entity.Usuarios;
@@ -149,5 +151,19 @@ public class JefePrestamistaController {
 		    ususerv.updateUsuario(usuarioExiste);
 		    
 		 return "redirect:/JefePrestamista/editarJefePrestamista?success";
+	 }
+	 
+	 //delete nivel coquito gpt
+	 @GetMapping("/eliminarJefePrestamista/{id}")
+	 public String eliminarJefePrestamista(@PathVariable("id") int id, RedirectAttributes flash) {
+		 
+		 Usuarios findUser = usurepo.findById(id);
+		 if(findUser!=null) {
+			 usurepo.delete(findUser);
+			 flash.addFlashAttribute("success", "Se ha eliminado le usuario correctamente");
+		 } else {
+			 flash.addAttribute("unsuccess", "Error al eliminar");
+		 }
+		 return "redirect:/JefePrestamista/distritos";
 	 }
 }

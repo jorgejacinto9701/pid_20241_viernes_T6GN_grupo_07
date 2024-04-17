@@ -11,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.prestamos.demo.entity.Distrito;
 import com.prestamos.demo.entity.Usuarios;
@@ -23,6 +26,7 @@ import com.prestamos.demo.service.UsuariosService;
 
 @Controller
 @RequestMapping("/Prestamista")
+//@RestController("/prestamista")
 public class PrestamistaController {
 	
 	@Autowired
@@ -97,6 +101,19 @@ public class PrestamistaController {
 	         // Puedes lanzar una excepción, redirigir a una página de error, etc.
 	         return "error"; // Por ejemplo, podrías devolver una página de error
 	     }
+	 }
+	 
+	 @GetMapping("/eliminarPrestamista/{id}")
+	 public String eliminarJefePrestamista(@PathVariable("id") int id, RedirectAttributes flash) {
+		 
+		 Usuarios findUser = usurepo.findById(id);
+		 if(findUser!=null) {
+			 usurepo.delete(findUser);
+			 flash.addFlashAttribute("success", "Se ha eliminado le usuario correctamente");
+		 } else {
+			 flash.addAttribute("unsuccess", "Error al eliminar");
+		 }
+		 return "redirect:/Prestamista/distritos";
 	 }
 
 	
