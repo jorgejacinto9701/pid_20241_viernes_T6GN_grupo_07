@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.prestamos.demo.entity.Distrito;
 import com.prestamos.demo.entity.Usuarios;
+import com.prestamos.demo.repository.DistritoRepository;
 import com.prestamos.demo.repository.UsuariosRepository;
 import com.prestamos.demo.service.DistritoService;
 import com.prestamos.demo.service.UsuariosService;

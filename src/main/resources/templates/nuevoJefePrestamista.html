@@ -110,8 +110,9 @@
 				<div class="mb-3">
 				    <label for="idDistrito" class="form-label">Distrito a Cargo:</label>
 				    <select class="form-select" id="idDistrito" name="distrito.id_distrito" required>
-				        <option value="">[Seleccione]</option>
-				    </select>
+    				<option value="">[Seleccione]</option>
+    				<option th:each="distrito : ${distritos}" th:value="${distrito.id_distrito}" th:text="${distrito.nombre_disrtito}"></option>
+				</select>
 				</div>
 			</div>	
 			<br>
@@ -124,16 +125,17 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous">
 	</script>
+	
 	<script type="text/javascript">
-	    $(document).ready(function() {
-	        $.getJSON("/JefePrestamista/distritos", {}, function(data) {
-	            $.each(data, function(index, item) {
-	                $("#idDistrito").append("<option value=" + item.id_distrito + ">" + item.nombre_disrtito + "</option>");
-	            });
-	        }).fail(function(jqXHR, textStatus, errorThrown) {
-	            console.error("Error al cargar los distritos: " + textStatus, errorThrown);
-	        });
-	    });
-	</script>
+    $(document).ready(function() {
+        $.getJSON("/api/distritos", {}, function(data) {
+            $.each(data, function(index, item) {
+                $("#idDistrito").append("<option value=" + item.id_distrito + ">" + item.nombre_disrtito + "</option>");
+            });
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error("Error al cargar los distritos: " + textStatus, errorThrown);
+        });
+    });
+</script>
 </body>
 </html>
