@@ -108,9 +108,9 @@ public class PrestatarioController {
 		 Usuarios findUser = usurepo.findById(id);
 		 if(findUser!=null) {
 			 usurepo.delete(findUser);
-			 flash.addFlashAttribute("success", "Se ha eliminado le usuario correctamente");
+			 flash.addFlashAttribute("success", "Se ha eliminado el usuario correctamente");
 		 } else {
-			 flash.addAttribute("unsuccess", "Error al eliminar");
+			 flash.addAttribute("unsuccess", "Error al eliminarlo");
 		 }
 		 return "redirect:/Prestatario/distritos";
 	 }
