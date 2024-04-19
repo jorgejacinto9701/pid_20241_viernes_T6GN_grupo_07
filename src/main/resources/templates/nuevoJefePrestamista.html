@@ -128,7 +128,7 @@
 	
 	<script type="text/javascript">
     $(document).ready(function() {
-        $.getJSON("/api/distritos", {}, function(data) {
+        $.getJSON("/JefePrestamista/distritos", {}, function(data) {
             $.each(data, function(index, item) {
                 $("#idDistrito").append("<option value=" + item.id_distrito + ">" + item.nombre_disrtito + "</option>");
             });
