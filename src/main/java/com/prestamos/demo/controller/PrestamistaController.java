@@ -32,6 +32,7 @@ public class PrestamistaController {
 	@Autowired
 	private UsuariosRepository usurepo;
 	
+	
 	@Autowired
 	private UsuariosService ususerv;
 	
