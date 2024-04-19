@@ -133,7 +133,7 @@ public class PrestamistaController {
 		        usuarioExistente.setCorreo(usuario.getCorreo());
 		        usuarioExistente.setDni(usuario.getDni());
 		        usuarioExistente.setTelefono(usuario.getTelefono());
-		        usuarioExistente.setContrasenia(usuario.getContrasenia());
+		        //usuarioExistente.setContrasenia(usuario.getContrasenia());
 		        usuarioExistente.setNacimiento(usuario.getNacimiento());
 		        // Actualizar otras propiedades si es necesario (por ejemplo, idUsuario y distrito)
 
@@ -148,18 +148,6 @@ public class PrestamistaController {
 		        return "error";
 		    }
 		}
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 	 
 	 
 	 
