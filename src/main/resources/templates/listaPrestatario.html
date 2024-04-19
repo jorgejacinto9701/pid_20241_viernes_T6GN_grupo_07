@@ -95,7 +95,7 @@
 						<td th:text="${prest.nacimiento}"></td>
 						<td th:text="${prest.distrito.nombre_disrtito}"></td>
 						<td>
-							<button class="btn btn-info">Actualizar</button>
+							<a th:href="@{/Prestatario/editarPrestatario/{id}(id=${prest.id})}" class="btn btn-info">Actualizar</a>
 							<a class="btn btn-danger">Eliminar</a>
 						</td>
 			            <!-- Agrega más celdas según sea necesario -->
