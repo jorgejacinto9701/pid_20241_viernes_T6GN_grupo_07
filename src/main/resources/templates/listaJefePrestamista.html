@@ -71,29 +71,53 @@
 		
 		  
 		
-		<div class="container">
-			<h2 class="mt-5" style="text-align: center;">Jefes Prestamistas a cargo!</h2>
-			<br>
-			<br>
-		</div>
-			<table class="table table-striped">
-			    <thead>
-					<tr style="text-align: center;">
-					        <th style="width: 5%;">ID</th>
-					        <th style="width: 10%;">Nombre</th>
-					        <th style="width: 10%;">Apellido</th>
-					        <th style="width: 15%;">Correo</th>
-					        <th style="width: 8%;">DNI</th>
-					        <th style="width: 10%;">Teléfono</th>
-					        <th style="width: 15%;">Nacimiento</th>
-					        <th style="width: 10%;">Distrito</th>
-					        <th style="width: 27%;">Acciones</th>
-					    </tr>
-			    </thead>
-			    <tbody>
 			
-			        <tr th:each="jefe : ${usuarioJP}" style="text-align: center;">
-			            <td th:text="${jefe.id}"></td>
+
+		
+	
+		<!-- FIN TABLA JEFE PRESTAMISTA-->
+		<!-- Incluir el modal -->
+		
+		
+		
+				<div class="container">
+ <h1 class="title">Jefes Prestamistas a cargo!</h1>
+
+<table class="listado">
+  <thead>
+    <tr>
+      <th>
+        <h1>ID</h1>
+      </th>
+      <th>
+        <h1>Nombre</h1>
+      </th>
+      <th>
+        <h1>Apellido</h1>
+      </th>
+      <th >
+        <h1>Correo</h1>
+      </th>
+      <th>
+        <h1>DNI</h1>
+      </th>
+      <th>
+        <h1>Telefono</h1>
+      </th>
+      <th>
+        <h1>Nacimiento</h1>
+      </th>
+      <th>
+        <h1>Distrito</h1>
+      </th>
+       <th colspan="2">
+        <h1>Acciones</h1>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="jefe : ${usuarioJP}">
+    <td th:text="${jefe.id}"></td>
 			            <td th:text="${jefe.nombre}"></td>
 			            <td th:text="${jefe.apellido}"></td>
 						<td th:text="${jefe.correo}"></td>
@@ -101,19 +125,18 @@
 						<td th:text="${jefe.telefono}"></td>
 						<td th:text="${jefe.nacimiento}"></td>
 						<td th:text="${jefe.distrito.nombre_disrtito}"></td>
-						<td>
-							<a th:href="@{/JefePrestamista/editarJefePrestamista/{id}(id=${jefe.id})}" class="btn btn-info">Actualizar</a>
-							<a class="btn btn-danger">Eliminar</a>
-						</td>
-			         
-			        </tr>
-			    </tbody>
-			</table>		
+       
 
+      <td class="icono"><a th:href="@{/JefePrestamista/editarJefePrestamista/{id}(id=${jefe.id})}"><span class="fa fa-pencil-square-o fa-2x"></span></a></td>
+      <td class="icono"><a href="#"><span class="fa fa-trash fa-2x"></span></a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</div>
 		
-	
-		<!-- FIN TABLA JEFE PRESTAMISTA-->
-		<!-- Incluir el modal -->
+		
 		
 		
 		<style>
@@ -211,8 +234,6 @@ td a {
 {
   background-color: #001623;
 
-  box-shadow: #001623 -1px 1px, #ba0f26 -2px 2px, #001623 -3px 3px,
-    #001623 -4px 4px, #001623 -5px 5px, #001623 -6px 6px;
 
 
   transition-delay: 0s;
