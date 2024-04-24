@@ -124,7 +124,8 @@
 						<td th:text="${jefe.dni}"></td>
 						<td th:text="${jefe.telefono}"></td>
 						<td th:text="${jefe.nacimiento}"></td>
-						<td th:text="${jefe.distrito.nombre_disrtito}"></td>
+						
+       <td th:text="${jefe.distrito != null ? jefe.distrito.nombre_disrtito : ''}"></td>
        
 
       <td class="icono"><a th:href="@{/JefePrestamista/editarJefePrestamista/{id}(id=${jefe.id})}"><span class="fa fa-pencil-square-o fa-2x"></span></a></td>
