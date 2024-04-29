@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Monto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"],
+    input[type="date"],
+    input[type="text"] {
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de Monto</h2>
+    <form id="montoForm">
+      <label for="monto">Monto:</label>
+      <input type="number" id="monto" name="monto" value="500">
+
+      <label for="fechaInicio">Fecha de inicio:</label>
+      <input type="date" id="fechaInicio" name="fechaInicio">
+
+      <label for="fechaFin">Fecha de fin:</label>
+      <input type="date" id="fechaFin" name="fechaFin">
+
+      <label for="pagoDiario">Pago diario:</label>
+      <input type="text" id="pagoDiario" name="pagoDiario" readonly>
+
+      <label for="diasHabiles">Días hábiles:</label>
+      <input type="text" id="diasHabiles" name="diasHabiles" readonly>
+
+      <button type="button" onclick="calcularMonto()">Calcular</button>
+    </form>
+  </div>
+
+  <script>
+    function calcularMonto() {
+      var monto = parseFloat(document.getElementById('monto').value);
+      var fechaInicio = new Date(document.getElementById('fechaInicio').value);
+      var fechaFin = new Date(document.getElementById('fechaFin').value);
+      
+      // Calcular los días hábiles entre las dos fechas
+      var diasHabiles = calcularDiasHabiles(fechaInicio, fechaFin);
+      
+      // Calcular el pago diario
+      var pagoDiario = monto / diasHabiles;
+      
+      document.getElementById('pagoDiario').value = pagoDiario.toFixed(2);
+      document.getElementById('diasHabiles').value = diasHabiles;
+    }
+    
+    function calcularDiasHabiles(fechaInicio, fechaFin) {
+  	  var diasHabiles = 0;
+  	  var fechaActual = new Date(fechaInicio);
+  
+  	// Iterar sobre cada día entre las fechas
+  		while (fechaActual < fechaFin) {
+    	var diaSemana = fechaActual.getDay();
+    // Si el día no es sábado (6) ni domingo (0), contar como día hábil
+    	if (diaSemana !== 0 && diaSemana !== 6) {
+      	diasHabiles++;
+    }
+    	fechaActual.setDate(fechaActual.getDate() + 1);
+  }
+
+  // Verificar si la fechaFin es un día laborable
+  	if (fechaFin.getDay() !== 0 && fechaFin.getDay() !== 6) {
+    diasHabiles++;
+  }
+
+  return diasHabiles;
+}
+  </script>
+</body>
+</html>
