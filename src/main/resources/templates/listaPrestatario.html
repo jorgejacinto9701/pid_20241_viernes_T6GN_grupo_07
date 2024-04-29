@@ -39,7 +39,7 @@
 		      <div class="offcanvas-body">
 		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 					<li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
-		                   <a class="nav-link" aria-current="page" href="#">Lista Prestatarios</a>
+		                   <a class="nav-link active" aria-current="page" th:href="@{/Prestatario/listaPrestatario}">Lista Prestatarios</a>
 		              </li>
 		  			  <li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
 		                    <a class="nav-link" aria-current="page" th:href="@{/Prestatario/nuevoPrestatario}">Nuevo Prestatario</a>

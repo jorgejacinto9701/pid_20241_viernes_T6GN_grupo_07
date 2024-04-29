@@ -71,100 +71,62 @@
 	<br>
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!-- Inicio de Registro -->	
 	<div class="flex justify-center">
-    <form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6">
-       <!-- Mensaje de registro exitoso-->
-		<div th:if="${param.success}">
-			<div class="alert alert-info">
-				Registro exitoso :)
-			</div>
-		</div>
-
-        <h2 class="mb-4 font-bold text-center">Registre un Prestamista!</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="text" name="nombre" id="nombre" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="nombre" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
-            </div>
-			<div class="row">
-				<div class="col-6">
-					  <label for="dni" class="form-label">Dni:</label>
-					  <input type="number" class="form-control" id="dni" name="dni" required>
-				</div>
-				<div class="col-6">
-	                <label for="telefono" class="form-label">Teléfono:</label>
-	                <input type="tel" class="form-control" id="telefono" name="telefono"  required>
+	    <form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6">      
+	        <h2 class="mb-4 font-bold text-center">Registre un Prestamista!</h2>
+	
+	        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="text" name="nombre" id="nombre" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="nombre" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
 	            </div>
-			</div>
-			<div class="row">
-				<div class="col-6">
-					 <label for="contrasenia" class="form-label">Nuevo Paswword:</label>
-					<input type="password"  class="form-control" id="contrasenia" name="contrasenia" required>
-				</div>
-				<div class="col-6">
-					<label for="nacimiento" class="form-label">Fecha de Nacimiento:</label>
-					<input type="date" class="form-control" id="nacimiento" name="nacimiento"  required>
-				</div>
-			</div>	
-			<br>
-			<button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="text" name="apellido" id="apellido" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="apellido" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido</label>
+	            </div>
+	        </div>
+	
+	        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="number" name="dni" id="dni" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="dni" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">DNI</label>
+	            </div>
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="text" name="telefono" id="telefono" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="telefono" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
+	            </div>
+	        </div>
+	
+	        <div class="relative mb-2">
+	            <label for="fecha_nacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+	            <input type="date" id="nacimiento" name="nacimiento" class="block w-full px-4 py-2 leading-tight bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
+	        </div>
+	
+	   
+	
+	        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="text" name="correo" id="correo" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="correo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo Electrónico</label>
+	            </div>
+	            <div class="relative z-0 w-full mb-5 group">
+	                <input type="password" name="contrasenia" id="contrasenia" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
+	                <label for="contrasenia" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nuevo Password</label>
+	            </div>
+	        </div>
+	
+	        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar Jefe Prestamista</button>
+	    </form>
 	</div>
-
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="text" name="apellido" id="apellido" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="apellido" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Apellido</label>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="number" name="dni" id="dni" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="dni" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">DNI</label>
-            </div>
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="text" name="telefono" id="telefono" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="telefono" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
-            </div>
-        </div>
-
-        <div class="relative mb-2">
-            <label for="fecha_nacimiento" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
-            <input type="date" id="nacimiento" name="nacimiento" class="block w-full px-4 py-2 leading-tight bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
-        </div>
-
-   
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="text" name="correo" id="correo" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="correo" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Correo Electrónico</label>
-            </div>
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="password" name="contrasenia" id="contrasenia" class="border-b-2 border-gray-300 focus:border-blue-500 focus:outline-none focus:ring-0 block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none dark:border-gray-300 dark:focus:border-blue-500 peer" placeholder=" " required />
-                <label for="contrasenia" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nuevo Password</label>
-            </div>
-        </div>
-
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar Jefe Prestamista</button>
-    </form>
-</div>
-
-	
-	
-	
+	<!-- Fin de Registro -->	
+	<!-- Mensaje de registro exitoso-->
+	<div class="container" th:if="${param.success}">
+		<div class="alert alert-info">
+			Registro exitoso :)
+		</div>
+	</div>
+	<!-- Fin de Mensaje de registro exitoso-->
 	
 	
 	
