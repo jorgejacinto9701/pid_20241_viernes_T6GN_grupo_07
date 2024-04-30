@@ -2,7 +2,6 @@ package com.prestamos.demo.entity;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
