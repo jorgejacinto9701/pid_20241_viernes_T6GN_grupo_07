@@ -1,5 +1,4 @@
 package com.prestamos.demo.entity;
-
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -71,9 +70,4 @@ public class Prestamos {
 		this.idUsuario = idUsuario;
 		this.estado = estado;
 	}
-
-	
-	
-	
-
 }

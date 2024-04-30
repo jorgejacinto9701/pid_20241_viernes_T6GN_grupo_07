@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -18,9 +19,12 @@ import com.prestamos.demo.entity.Usuarios;
 import com.prestamos.demo.repository.UsuariosRepository;
 import com.prestamos.demo.service.PrestamosService;
 
+
+
 @Controller
 public class PrestamosController {
 	
+
 	@Autowired
 	private UsuariosRepository usurepo;
 	
@@ -85,5 +89,6 @@ public class PrestamosController {
 	     }
 	}
 	
+
 
 }
