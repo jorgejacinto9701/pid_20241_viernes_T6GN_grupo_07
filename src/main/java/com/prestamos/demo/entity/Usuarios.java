@@ -22,6 +22,7 @@ public class Usuarios {
 	private int id; 
 	
 	@Column(name="nombre")
+	
 	private String nombre;
 	
 	@Column(name="apellido")

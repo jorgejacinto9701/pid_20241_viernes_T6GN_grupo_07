@@ -14,6 +14,8 @@ Usuarios findByCorreo (String correo);
 	Usuarios findById(int id);
 	
 	List<Usuarios> findByIdUsuario(Usuarios idUsuario);
+	
+	boolean existsByCorreo(String correo);
 		
 }
 

@@ -131,10 +131,16 @@
 	</div>
 	<!-- Fin de Registro -->	
 	<!-- Mensaje de registro exitoso-->
+	<!-- 
 	<div class="container" th:if="${param.success}">
 		<div class="alert alert-info">
 			Registro exitoso :)
 		</div>
+	</div> -->
+	
+	<div class="alert alert-danger alert-dismissible fade show text-center" th:if="${unsuccess} != null" role="alert">
+	  <label th:text="${unsuccess}"></label>
+	  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	<!-- Fin de mensaje -->
 
