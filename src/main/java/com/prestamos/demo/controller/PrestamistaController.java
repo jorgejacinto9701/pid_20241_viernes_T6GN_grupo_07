@@ -57,9 +57,13 @@ public class PrestamistaController {
 	}
 
 	@PostMapping("/nuevoPrestamista")
-	public String registraUsuarioP(@ModelAttribute("usuarioP") Usuarios usu, Principal principal) {
+	public String registraUsuarioP(@ModelAttribute("usuarioP") Usuarios usu, Principal principal, RedirectAttributes flash) {
 
-		// Obtener el usuario actualmente autenticado
+		if (usurepo.existsByCorreo(usu.getCorreo())) {
+			flash.addFlashAttribute("unsuccess", "Error al registrar: correo '"+ usu.getCorreo() + "' ya existe.");
+			return "redirect:/Prestamista/nuevoPrestamista";
+		} else {
+
 		// Obtener el usuario actualmente autenticado
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
@@ -69,6 +73,7 @@ public class PrestamistaController {
 		} else {
 			// Manejar el caso en el que no haya usuario autenticado
 			// Puedes lanzar una excepción, redirigir a una página de error, etc.
+		}
 		}
 
 		return "redirect:/Prestamista/nuevoPrestamista?success";
