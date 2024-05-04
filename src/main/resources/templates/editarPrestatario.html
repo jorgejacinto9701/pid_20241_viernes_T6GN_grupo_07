@@ -127,16 +127,17 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous">
 	</script>
+
 	<script type="text/javascript">
 	    $(document).ready(function() {
-	        $.getJSON("/JefePrestamista/distritos", {}, function(data) {
-	            $.each(data, function(index, item) {
-	                $("#idDistrito").append("<option value=" + item.id + ">" + item.nombre + "</option>");
+	        $.getJSON("/JefePrestamista/distritos", {}, function(data) { $.each(data, function(index, item) {$("#idDistrito").append("<option value=" + item.id + ">" + item.nombre + "</option>");
 	            });
-	        }).fail(function(jqXHR, textStatus, errorThrown) {
-	            console.error("Error al cargar los distritos: " + textStatus, errorThrown);
+	        }).fail(function(jqXHR, textStatus, errorThrown) { console.error("Error al cargar los distritos: " + textStatus, errorThrown);
 	        });
 	    });
 	</script>
+		
+	   <!--VALIDACION-->
+        <script src="validaciones2.js"></script>
 </body>
 </html>
