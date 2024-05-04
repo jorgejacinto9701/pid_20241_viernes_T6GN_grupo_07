@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				correo: document.getElementById('correo').value.trim(),
 				contrasenia:document.getElementById('contrasenia').value.trim()
 			};
+			
 			console.log(JSON.stringify(datosFormulario)); // Verificar datos antes de enviar
 
 			fetch('/JefePrestamista/nuevoJefePrestamista', {

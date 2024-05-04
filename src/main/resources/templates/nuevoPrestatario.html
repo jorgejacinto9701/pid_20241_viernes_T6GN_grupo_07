@@ -135,6 +135,34 @@
 	    });
 	</script>
 	
+	<script>
+	    function validarFormulario() {
+	        var nombre = document.getElementById("nombre").value;
+	        var apellido = document.getElementById("apellido").value;
+	        var correo = document.getElementById("correo").value;
+	        var dni = document.getElementById("dni").value;
+	        var telefono = document.getElementById("telefono").value;
+	
+	        // Validar formato de correo electrónico
+	        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	        if (!emailRegex.test(correo)) {
+	            alert("Por favor introduce un correo electrónico válido.");
+	            return false;}
+	
+	        // Validar longitud del DNI
+	        if (dni.length !== 8) {
+	            alert("El DNI debe tener 8 dígitos.");
+	            return false;}
+	
+	        // Validar longitud del número de teléfono
+	        if (telefono.length !== 9) {
+	            alert("El número de teléfono debe tener 9 dígitos.");
+	            return false;}
+	
+	        // Si todas las validaciones pasan, el formulario se enviará al servidor
+	        return true;}
+	</script>
+	
 		<!--VALIDACION-->
 	<script src="validaciones2.js" ></script>
 </body>
