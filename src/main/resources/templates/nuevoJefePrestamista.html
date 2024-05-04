@@ -84,7 +84,7 @@
 
 	<!-- Inicio de Registro -->
 	<div class="flex justify-center">
-		<form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6">
+		<form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6" onsubmit="return validarFormulario()">
 			<h2 class="mb-4 font-bold text-center">Registre un Jefe Prestamista!</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 				<div class="relative z-0 w-full mb-5 group">
@@ -199,6 +199,37 @@
 			});
 		});
 
+	</script>
+	<script>
+	    function validarFormulario() {
+	        var nombre = document.getElementById("nombre").value;
+	        var apellido = document.getElementById("apellido").value;
+	        var dni = document.getElementById("dni").value;
+	        var telefono = document.getElementById("telefono").value;
+	        var correo = document.getElementById("correo").value;
+	
+	        // Validar formato de correo electrónico
+	        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	        if (!emailRegex.test(correo)) {
+	            alert("Por favor, introduce un correo electrónico válido.");
+	            return false;
+	        }
+	
+	        // Validar longitud del DNI
+	        if (dni.length !== 8) {
+	            alert("El DNI debe tener 8 dígitos.");
+	            return false;
+	        }
+	
+	        // Validar longitud del número de teléfono
+	        if (telefono.length !== 9) {
+	            alert("El número de teléfono debe tener 9 dígitos.");
+	            return false;
+	        }
+	
+	        // Si todas las validaciones pasan, el formulario se enviará al servidor
+	        return true;
+	    }
 	</script>
 	<!--VALIDACION-->
 	<script src="validaciones.js" ></script>
