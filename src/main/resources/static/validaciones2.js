@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		return valido;
 	}
+	
 
 	// Función para validar el formato de correo electrónico
 	function validarCorreo(correo) {
