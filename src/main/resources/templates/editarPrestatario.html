@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
@@ -13,6 +14,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+	
 	
 	<!--NAVBAR-->
 	<nav class="navbar navbar-dark bg-dark fixed-top" style="background-color: #001623 !important ;">
@@ -109,6 +111,7 @@
 				</div>
 				<div class="col-6">
 	                <label for="telefono" class="form-label">Teléfono:</label>
+	         
 	                <input type="tel" class="form-control" id="telefono" name="telefono" th:field="*{telefono}" required>
 	            </div>
 			</div>
@@ -127,16 +130,43 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous">
 	</script>
+
 	<script type="text/javascript">
 	    $(document).ready(function() {
-	        $.getJSON("/JefePrestamista/distritos", {}, function(data) {
-	            $.each(data, function(index, item) {
-	                $("#idDistrito").append("<option value=" + item.id + ">" + item.nombre + "</option>");
+	        $.getJSON("/JefePrestamista/distritos", {}, function(data) { $.each(data, function(index, item) {$("#idDistrito").append("<option value=" + item.id + ">" + item.nombre + "</option>");
 	            });
-	        }).fail(function(jqXHR, textStatus, errorThrown) {
-	            console.error("Error al cargar los distritos: " + textStatus, errorThrown);
+	        }).fail(function(jqXHR, textStatus, errorThrown) { console.error("Error al cargar los distritos: " + textStatus, errorThrown);
 	        });
 	    });
 	</script>
+			<script>
+	    function validarFormulario() {
+	        var nombre = document.getElementById("nombre").value;
+	        var apellido = document.getElementById("apellido").value;
+	        var correo = document.getElementById("correo").value;
+	        var dni = document.getElementById("dni").value;
+	        var telefono = document.getElementById("telefono").value;
+	
+	        // Validar formato de correo electrónico
+	        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	        if (!emailRegex.test(correo)) {
+	            alert("Por favor introduce un correo electrónico válido.");
+	            return false;}
+	
+	        // Validar longitud del DNI
+	        if (dni.length !== 8) {
+	            alert("El DNI debe tener 8 dígitos.");
+	            return false;}
+	
+	        // Validar longitud del número de teléfono
+	        if (telefono.length !== 9) {
+	            alert("El número de teléfono debe tener 9 dígitos.");
+	            return false;}
+	
+	        // Si todas las validaciones pasan, el formulario se enviará al servidor
+	        return true;}
+	</script>
+	   <!--VALIDACION-->
+        <script src="validaciones2.js"></script>
 </body>
 </html>
