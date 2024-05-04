@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
 	const formulario = document.getElementById('registroForm');
 	formulario.addEventListener('submit', function(event) {
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			alert('Por favor, seleccione un distrito.');
 			valido = false;
 		}
+		
 
 		// validar correo
 		const correo = document.getElementById('correo').value.trim();
