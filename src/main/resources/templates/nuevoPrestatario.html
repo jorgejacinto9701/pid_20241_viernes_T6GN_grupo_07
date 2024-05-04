@@ -123,6 +123,7 @@
         crossorigin="anonymous">
 	</script>
 	
+	
 	<script type="text/javascript">
 	    $(document).ready(function() { $.getJSON("/nuevoJefePrestamista/distritos", {}, function(data) {
 	            $.each(data, function(index, item) { $("#idDistrito").append("<option value=" + item.id + ">" + item.nombre + "</option>");

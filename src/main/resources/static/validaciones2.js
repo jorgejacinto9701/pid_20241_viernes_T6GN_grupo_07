@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			valido = false;
 		}
 
+
 		// Validar distrito
 		const idDistrito = document.getElementById('idDistrito').value.trim();
 		if (!idDistrito) {
