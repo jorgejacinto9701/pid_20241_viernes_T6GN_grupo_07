@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			};
 			
 			console.log(JSON.stringify(datosFormulario)); // Verificar datos antes de enviar
-			fetch('/JefePrestamista/nuevoPrestatario', {
+			fetch('/Prestatario/nuevoPrestatario', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'},

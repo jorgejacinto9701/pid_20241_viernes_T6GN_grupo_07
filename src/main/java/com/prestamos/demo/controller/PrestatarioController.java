@@ -54,8 +54,15 @@ public class PrestatarioController {
 	  }
 	 
 	 @PostMapping("/nuevoPrestatario")
-		public String registraUsuarioPT(@ModelAttribute("usuarioPT") Usuarios usu, Principal principal) {
+		public String registraUsuarioPT(@ModelAttribute("usuarioPT") Usuarios usu, Principal principal, RedirectAttributes flash) {
 		 
+
+			if (usurepo.existsByCorreo(usu.getCorreo())) {
+				flash.addFlashAttribute("unsuccess", "Error al registrar: correo '"+ usu.getCorreo() + "' ya existe.");
+				return "redirect:/Prestatario/nuevoPrestatario";
+			} else {
+				
+			}
 		// Obtener el usuario actualmente autenticado
 		 // Obtener el usuario actualmente autenticado
 		    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
