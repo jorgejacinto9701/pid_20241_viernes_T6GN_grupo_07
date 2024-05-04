@@ -89,36 +89,37 @@
 		
 		<h2 class="mt-5">Actualiza Prestatario</h2>
 		<br>
-		<form th:action="@{/Prestatario/editarPrestatario/{id}(id=${usuarioP.id})}" th:object="${usuarioP}" method="post" id="registroForm">
+		<form th:action="@{/Prestatario/editarPrestatario/{id}(id=${usuarioP.id})}" th:object="${usuarioP}" method="post" 
+		  id="registroForm" onsubmit="return validarFormularioPrestatario()">
 			<div class="row">
 				<div class="col-6">
 	                <label for="nombre" class="form-label">Nombre:</label>
-	                <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" required>
+	                <input type="text" class="form-control" id="nombreprestatario" name="nombre" th:field="*{nombre}" required>
 	            </div>
 	            <div class="col-6">
 	                <label for="apellido" class="form-label">Apellido:</label>
-	                <input type="text" class="form-control" id="apellido" name="apellido" th:field="*{apellido}"  required>
+	                <input type="text" class="form-control" id="apellidoprestatario" name="apellido" th:field="*{apellido}"  required>
 	            </div>
 			</div>        
             <div class="">
                 <label for="correo" class="form-label">Correo electrónico:</label>
-                <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" required>
+                <input type="email" class="form-control" id="correoprestatario" name="correo" th:field="*{correo}" required>
             </div>
 			<div class="row">
 				<div class="col-6">
 					  <label for="dni" class="form-label">Dni:</label>
-					  <input type="number" class="form-control" id="dni" name="dni" th:field="*{dni}" required>
+					  <input type="number" class="form-control" id="dniprestatario" name="dni" th:field="*{dni}" required>
 				</div>
 				<div class="col-6">
 	                <label for="telefono" class="form-label">Teléfono:</label>
 	         
-	                <input type="tel" class="form-control" id="telefono" name="telefono" th:field="*{telefono}" required>
+	                <input type="tel" class="form-control" id="telefonoprestatario" name="telefono" th:field="*{telefono}" required>
 	            </div>
 			</div>
 			<div class="row">
 				<div class="col-6">
 					<label for="nacimiento" class="form-label">Fecha de Nacimiento:</label>
-					<input type="date" class="form-control" id="nacimiento" name="nacimiento" th:field="*{nacimiento}" required>
+					<input type="date" class="form-control" id="nacimientoprestatario" name="nacimiento" th:field="*{nacimiento}" required>
 				</div>
 			</div>	
 			<br>
@@ -139,34 +140,36 @@
 	        });
 	    });
 	</script>
-			<script>
-	    function validarFormulario() {
-	        var nombre = document.getElementById("nombre").value;
-	        var apellido = document.getElementById("apellido").value;
-	        var correo = document.getElementById("correo").value;
-	        var dni = document.getElementById("dni").value;
-	        var telefono = document.getElementById("telefono").value;
-	
-	        // Validar formato de correo electrónico
-	        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	        if (!emailRegex.test(correo)) {
-	            alert("Por favor introduce un correo electrónico válido.");
-	            return false;}
-	
-	        // Validar longitud del DNI
-	        if (dni.length !== 8) {
-	            alert("El DNI debe tener 8 dígitos.");
-	            return false;}
-	
-	        // Validar longitud del número de teléfono
-	        if (telefono.length !== 9) {
-	            alert("El número de teléfono debe tener 9 dígitos.");
-	            return false;}
-	
-	        // Si todas las validaciones pasan, el formulario se enviará al servidor
-	        return true;}
-	</script>
-	   <!--VALIDACION-->
-        <script src="validaciones2.js"></script>
+<script>
+		    function validarFormularioPrestatario() {
+		        var nombre = document.getElementById("nombreprestatario").value;
+		        var apellido = document.getElementById("apellidoprestatario").value;
+		        var dni = document.getElementById("dniprestatario").value;
+		        var telefono = document.getElementById("telefonoprestatario").value;
+		        var correo = document.getElementById("correoprestatario").value;
+		
+		        // Validar formato de correo electrónico
+		        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		        if (!emailRegex.test(correo)) {
+		            alert("Por favor, introduce un correo electrónico válido.");
+		            return false;
+		        }
+		
+		        // Validar longitud del DNI
+		        if (dni.length !== 8) {
+		            alert("El DNI debe tener 8 dígitos.");
+		            return false;
+		        }
+		
+		        // Validar longitud del número de teléfono
+		        if (telefono.length !== 9) {
+		            alert("El número de teléfono debe tener 9 dígitos.");
+		            return false;
+		        }
+		
+		        // Si todas las validaciones pasan, el formulario se enviará al servidor
+		        return true;
+		    }
+		</script>
 </body>
 </html>
