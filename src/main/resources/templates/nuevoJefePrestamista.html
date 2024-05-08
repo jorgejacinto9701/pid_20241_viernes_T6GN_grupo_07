@@ -15,7 +15,15 @@
 	<!-- TAILWIND -->
 	<script src="https://cdn.tailwindcss.com"></script>
 
+
+
 </head>
+
+	<style>
+  body {
+            background-color: #BDC3C7;
+        }
+</style>
 
 <body>
 	<!--NAVBAR-->
@@ -83,7 +91,7 @@
 
 
 	<!-- Inicio de Registro -->
-	<div class="flex justify-center">
+	<div class="flex justify-center mt-10 mx-5 bg-white">
 		<form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6" onsubmit="return validarFormulario()">
 			<h2 class="mb-4 font-bold text-center">Registre un Jefe Prestamista!</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -127,7 +135,7 @@
 					class="block w-full px-4 py-2 leading-tight bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0" />
 			</div>
 
-			<div class="w-full my-8">
+			<div class="w-full my-8 relative">
 				<label class="block text-sm font-medium text-gray-700">Distrito a Cargo</label>
 				<select id="idDistrito" name="distrito.id_distrito"
 					class="block w-full px-4 py-2 pr-8 leading-tight bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 dark:border-gray-600 dark:focus:border-blue-500 dark:focus:ring-0">
