@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 0; /* Elimina el margen predeterminado del cuerpo */
+        }
+        h1 {
+            margin-bottom: 10px;
+            margin-top: 0;
+            margin-right: 20px;
+        }
+        .prestario-info,
+        .filter-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Reducido el margen inferior */
+            width: 50%;
+        }
+        .prestario-info h2,
+        .filter-container label {
+            margin-right: 10px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .prestario-info h2 {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        .prestario-info input[type="text"],
+        .filter-container input[type="date"],
+        .filter-container button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-size: 14px;
+        }
+        .prestario-info input[type="text"] {
+            flex-grow: 1;
+        }
+        .filter-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+        .filter-container button:hover {
+            background-color: #45a049;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 10px; /* Ajuste del margen superior */
+            margin-bottom: 10px; /* Ajuste del margen inferior */
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prestario</h1> 
+    <div class="prestario-info">
+        <h2>Prestario:</h2> 
+        <input type="text" id="prestario-name" name="prestario-name" placeholder="Nombre y Apellido" >
+    </div>
+    <div class="filter-container">
+        <label for="start-date">Fecha Solicitud (Desde):</label>
+        <input type="date" id="start-date" name="start-date">
+        <label for="end-date" style="margin-left: 10px;">Hasta:</label>
+        <input type="date" id="end-date" name="end-date">
+        <button id="filter-btn">Filtrar</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre y Apellido</th>
+                <th>Monto (Pen)</th>
+                <th>Interes</th>
+                <th>Tasa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí irían los datos de la tabla -->
+        </tbody>
+    </table>
+</body>
+</html>
