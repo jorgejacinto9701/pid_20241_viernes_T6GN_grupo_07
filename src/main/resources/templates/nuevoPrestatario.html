@@ -15,7 +15,11 @@
        <!-- TAILWIND -->	
         <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
+ <style>
+  body {
+            background-color: #BDC3C7;
+        }
+</style>
 <body>
 	
 	<!--NAVBAR-->
@@ -76,7 +80,7 @@
 	
 	
 	<div class="flex justify-center">
-	    <form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6"
+	    <form method="post" id="registroForm" class="w-2/3 flex flex-col px-5 py-3 mx-5 space-y-6 bg-white mt-5"
 	     onsubmit="return validarFormularioPrestatario()">      
 	        <h2 class="mb-4 font-bold text-center">Registre un Prestatario!</h2>	
 	        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -110,6 +114,15 @@
    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar Prestatario</button>	   
     </form>
 	</div>
+	
+		<!-- Fin de Registro -->	
+	<!-- Mensaje de registro exitoso-->
+	<div class="container" th:if="${param.success}">
+		<div class="alert alert-info">
+			Registro exitoso :)
+		</div>
+	</div>
+	
 	
 	<div class="alert alert-danger alert-dismissible fade show text-center" th:if="${unsuccess} != null" role="alert">
 			<label th:text="${unsuccess}"></label>
