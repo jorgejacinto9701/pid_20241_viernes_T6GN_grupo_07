@@ -1,133 +1,158 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestario</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	           <!-- FONT AWESOME -->
-	            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-				<script src="https://unpkg.com/feather-icons"></script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 20px;
-            box-sizing: border-box;
-            margin: 0; /* Elimina el margen predeterminado del cuerpo */
-        }
-        h1 {
-            margin-bottom: 10px;
-            margin-top: 0;
-            margin-right: 20px;
-        }
-        .prestario-info,
-        .filter-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px; /* Reducido el margen inferior */
-            width: 50%;
-        }
-        .prestario-info h2,
-        .filter-container label {
-            margin-right: 10px;
-            margin-bottom: 0;
-            margin-top: 0;
-            font-weight: normal;
-            font-size: 14px;
-        }
-        .prestario-info h2 {
-            margin-left: 0;
-            margin-right: 10px;
-        }
-        .prestario-info input[type="text"],
-        .filter-container input[type="date"],
-        .filter-container button {
-            border: none;
-            background-color: transparent;
-            padding: 0;
-            margin: 0;
-            outline: none;
-            font-size: 14px;
-        }
-        .prestario-info input[type="text"] {
-            flex-grow: 1;
-        }
-        .filter-container button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-left: 15px;
-        }
-        .filter-container button:hover {
-            background-color: #45a049;
-        }
-        table {
-            border-collapse: collapse;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            width: 100%;
-            margin-top: 10px; /* Ajuste del margen superior */
-            margin-bottom: 10px; /* Ajuste del margen inferior */
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    </style>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prestario</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<!-- FONT AWESOME -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://unpkg.com/feather-icons"></script>
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 20px;
+			box-sizing: border-box;
+			margin: 0;
+			/* Elimina el margen predeterminado del cuerpo */
+		}
+
+		h1 {
+			margin-bottom: 10px;
+			margin-top: 0;
+			margin-right: 20px;
+		}
+
+		.prestario-info,
+		.filter-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+			/* Reducido el margen inferior */
+			width: 50%;
+		}
+
+		.prestario-info h2,
+		.filter-container label {
+			margin-right: 10px;
+			margin-bottom: 0;
+			margin-top: 0;
+			font-weight: normal;
+			font-size: 14px;
+		}
+
+		.prestario-info h2 {
+			margin-left: 0;
+			margin-right: 10px;
+		}
+
+		.prestario-info input[type="text"],
+		.filter-container input[type="date"],
+		.filter-container button {
+			border: none;
+			background-color: transparent;
+			padding: 0;
+			margin: 0;
+			outline: none;
+			font-size: 14px;
+		}
+
+		.prestario-info input[type="text"] {
+			flex-grow: 1;
+		}
+
+		.filter-container button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 14px;
+			margin-left: 15px;
+		}
+
+		.filter-container button:hover {
+			background-color: #45a049;
+		}
+
+		table {
+			border-collapse: collapse;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			overflow: hidden;
+			width: 100%;
+			margin-top: 10px;
+			/* Ajuste del margen superior */
+			margin-bottom: 10px;
+			/* Ajuste del margen inferior */
+		}
+
+		th,
+		td {
+			padding: 15px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+	</style>
 </head>
+
 <body>
 	<!--NAVBAR-->
-		<nav class="navbar navbar-dark bg-dark fixed-top" style="background-color: #001623 !important ;">
-		  <div class="container-fluid">
-		    <a class="navbar-brand" href="#">		
+	<nav class="navbar navbar-dark bg-dark fixed-top" style="background-color: #001623 !important ;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">
 				<div sec:authorize="isAuthenticated()">
 					Bienvenido <span sec:authentication="principal.username"> User</span>
 				</div>
-				 <div sec:authorize="!isAuthenticated()">
-				      	Por favor inicia sesión para continuar.
-				  </div>
-			  </a>
-		    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: #001623 !important ;">
-		      <div class="offcanvas-header">
-		        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-		        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-		      </div>
-		      
-		      <div class="offcanvas-body">
-		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-		          <li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
-		            <a class="nav-link" aria-current="page" th:href="@{/Prestatario/listaPrestatario}">Lista de Prestatarios</a>
-		          </li>
-				  <li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
-				      <a class="nav-link" th:href="@{/Prestatario/nuevoPrestatario}">Nuevo Prestatario</a>
-				  </li>
-				  <li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
-				  							<a class="nav-link active" aria-current="page" th:href="@{/filtrarRegistro}">Solicitudes de Prestamos</a>
-				  						</li>
-				  <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-	                 <a class="nav-link" aria-current="page" href="#">Opción para Administradores</a>
-	             </li>
-				 <!--</li>
+				<div sec:authorize="!isAuthenticated()">
+					Por favor inicia sesión para continuar.
+				</div>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+				aria-controls="offcanvasNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel" style="background-color: #001623 !important ;">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
+							<a class="nav-link" aria-current="page" th:href="@{/Prestatario/listaPrestatario}">Lista de
+								Prestatarios</a>
+						</li>
+						<li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
+							<a class="nav-link" th:href="@{/Prestatario/nuevoPrestatario}">Nuevo Prestatario</a>
+						</li>
+						<li class="nav-item" sec:authorize="hasRole('ROLE_PRESTAMISTA')">
+							<a class="nav-link active" aria-current="page" th:href="@{/filtrarRegistro}">Solicitudes de
+								Prestamos</a>
+						</li>
+						<li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a class="nav-link" aria-current="page" href="#">Opción para Administradores</a>
+						</li>
+						<!--</li>
 				 	          <li class="nav-item dropdown">
 				 	            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				 	              Dropdown
@@ -141,112 +166,184 @@
 				 	              <li><a class="dropdown-item" href="#">Something else here</a></li>
 				 	            </ul>
 				 	          </li>-->
-		        </ul>
-				<br>
-				<div sec:authorize="isAuthenticated()">
-					<a class="flex gap-2 items-center"  th:href="@{/logout}"> <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion    </a> 
+					</ul>
+					<br>
+					<div sec:authorize="isAuthenticated()">
+						<a class="flex gap-2 items-center" th:href="@{/logout}"> <i
+								class="fa-solid fa-right-from-bracket"></i> Cerrar Sesion </a>
+					</div>
 				</div>
+			</div>
+		</div>
+	</nav>
+	<!--FIN DE NAVBAR-->
+
+
+	<br>
+	<br>
+
+	<h1>Prestario</h1>
+	<div class="prestario-info">
+		<h2>Prestario:</h2>
+		<input type="text" id="prestario-name" name="prestario-name" placeholder="Nombre y Apellido">
+	</div>
+	<div class="filter-container">
+		<label for="start-date">Fecha Solicitud (Desde):</label>
+		<input type="date" id="start-date" name="start-date">
+		<label for="end-date" style="margin-left: 10px;">Hasta:</label>
+		<input type="date" id="end-date" name="end-date">
+		<button id="filter-btn">Filtrar</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Nombre y Apellido</th>
+				<th class="text-center">Monto</th>
+				<th class="text-center">Fecha Incio</th>
+				<th class="text-center">Fecha Fin</th>
+				<th class="text-center">Dias para Pagar</th>
+				<th class="text-center">Pago Diario</th>
+				<th class="text-center">Estado</th>
+				<th class="text-center">Detalle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prest : ${prestamos}">
+				<th scope="row" th:text="${prest.id}"></th>
+				<td class="text-center" th:text="${prest.idUsuario.nombre + ' ' + prest.idUsuario.apellido}"></td>
+				<td class="text-center" th:text="${prest.monto}"></td>
+				<td class="text-center" th:text="${prest.fecha_inicio}"></td>
+				<td class="text-center" th:text="${prest.fecha_fin}"></td>
+				<td class="text-center" th:text="${prest.dias}"></td>
+				<td class="text-center" th:text="${prest.pagodiario}"></td>
+				<td class="text-center" th:text="${prest.estado}"></td>
+				<td class="text-center">
+					<a class="flex gap-2 items-center btn btn-info ver">
+						<i class="fas fa-search"></i>
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Modal -->
+	<div class="modal fade" id="verPrestamoModal" tabindex="-1" role="dialog" aria-labelledby="verPrestamoModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Detalle de Prestamo</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p><b>Nombre y Apellido:</b> <span id="modalPrestamoNombre"></span></p>
+					<p><b>Monto:</b> <span id="modalPrestamoMonto"></span></p>
+					<p><b>Fecha Inicio:</b> <span id="modalPrestamoInicio"></span></p>
+					<p><b>Fecha Fin:</b> <span id="modalPrestamoFin"></span></p>
+					<p><b>Dias de Plazo:</b> <span id="modalPrestamoDias"></span></p>
+					<p><b>Pago Diario:</b> <span id="modalPrestamoPago"></span></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" id="btnaprobar">Aprobar</button>
+					<button type="button" class="btn btn-danger" id="btndesaprobar">Rechazar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin de Modal -->
+	
+	<!-- Modal para Confirmar Aprobación -->
+		<div class="modal fade" id="confirmarAprobacionModal" tabindex="-1" role="dialog" aria-labelledby="confirmarAprobacionLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="confirmarAprobacionLabel">Aprobar Prestamo</h5>
+		      </div>
+		      <div class="modal-body">
+		        ¿Estás seguro de que deseas aprobar el crédito?
+		      </div>
+		      <div class="modal-footer">		  
+			  <!-- Formulario para Desaprobar Prestamo -->
+			  <form th:action="@{/aprobar}" method="post" id="formAprobarPrestamo">
+			  <input type="hidden" name="id" id="idPrestamoParaAprobar"> <!-- Campo oculto para el ID del préstamo -->
+		      <button type="submit" class="btn btn-success" id="confirmarAprobacion" form="formAprobarPrestamo">Aceptar</button>		  
+			  </form>
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 		      </div>
 		    </div>
 		  </div>
-		</nav>
-		<!--FIN DE NAVBAR-->
-		
-		
-		<br>
-		<br>
-		
-    <h1>Prestario</h1> 
-    <div class="prestario-info">
-        <h2>Prestario:</h2> 
-        <input type="text" id="prestario-name" name="prestario-name" placeholder="Nombre y Apellido" >
-    </div>
-    <div class="filter-container">
-        <label for="start-date">Fecha Solicitud (Desde):</label>
-        <input type="date" id="start-date" name="start-date">
-        <label for="end-date" style="margin-left: 10px;">Hasta:</label>
-        <input type="date" id="end-date" name="end-date">
-        <button id="filter-btn">Filtrar</button>
-    </div>
-	<table>
-	    <thead>
-	        <tr>
-	            <th>Id</th>
-	            <th>Nombre y Apellido</th>
-	            <th>Monto</th>
-	            <th>Detalle</th>
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <tr th:each="prest : ${prestamos}">
-	            <td th:text="${prest.id}"></td>
-	            <td th:text="${prest.idUsuario.nombre + ' ' + prest.idUsuario.apellido}"></td>
-	            <td th:text="${prest.monto}"></td>
-				<td>
-				    <a class="flex gap-2 items-center btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#myModal" 
-				       data-id="${prest.id}" data-nombre="${prest.idUsuario.nombre + ' ' + prest.idUsuario.apellido}" data-monto="${prest.monto}">
-				        <i class="fas fa-search"></i>
-				    </a>
-				</td>
-	        </tr>
-	    </tbody>
-	</table>
+		</div>
 	
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Detalle de Prestamo</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        <p><b>ID Prestamo:</b> <span id="modal-id"></span></p>
-	        <p><b>Nombre y Apellido:</b> <span id="modal-nombre"></span></p>
-	        <p><b>Monto:</b> <span id="modal-monto"></span></p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aprobar</button>
-	        <button type="button" class="btn btn-danger">Rechazar</button>
-	      </div>
-	    </div>
-	  </div>
+	<!-- Modal para Confirmar Desaprobación -->
+	<div class="modal fade" id="confirmarDesaprobacionModal" tabindex="-1" role="dialog"
+		aria-labelledby="confirmarDesaprobacionLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="confirmarDesaprobacionLabel">Desaprobar Prestamo</h5>
+				</div>
+				<div class="modal-body">
+					¿Estás seguro de que deseas desaprobar el crédito?
+				</div>
+				<div class="modal-footer">
+					<!-- Formulario para Aprobar Prestamo -->
+					<form th:action="@{/desaprobar}" method="post" id="formDesaprobarPrestamo">
+						<input type="hidden" name="id" id="idPrestamoParaDesaprobar">
+						<!-- Campo oculto para el ID del préstamo -->
+						<button type="submit" class="btn btn-success" id="confirmarDesaprobacion"
+							form="formDesaprobarPrestamo">Aceptar</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-	    crossorigin="anonymous">
-	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+		</script>
 	<script>
-	    $(document).ready(function () {
-	        // Función para cargar los detalles del préstamo cuando se hace clic en el botón
-	        $(".btn-info").click(function () {
-	            // Obtener el ID del préstamo del atributo data del botón
-	            var idPrestamo = $(this).data("id");
-	            
-	            // Realizar una solicitud AJAX para obtener los detalles del préstamo
-	            $.ajax({
-	                type: "GET",
-	                url: "/get-prestamo/" + idPrestamo, // Utiliza el ID del préstamo obtenido del atributo data
-	                success: function (data) {
-	                    // Mostrar los detalles del préstamo en el modal
-	                    $("#modal-id").text(data.id);
-	                    $("#modal-nombre").text(data.idUsuario.nombre + " " + data.idUsuario.apellido);
-	                    $("#modal-monto").text(data.monto);
-	                    
-	                    // Mostrar el modal
-	                    $("#myModal").modal("show");
-	                },
-	                error: function () {
-	                    // Manejar el caso de error
-	                    alert("Error al cargar los detalles del préstamo.");
-	                }
-	            });
-	        });
-	    });
+		// Espera a que el DOM esté completamente cargado
+		$(document).ready(function () {
+			$('.ver').on('click', function () {
+				const row = $(this).closest('tr');
+
+				const prestamoId = row.find('th[scope="row"]').text();
+				const nombre = row.find('td:nth-child(2)').text();
+				const monto = row.find('td:nth-child(3)').text();
+				const inicio = row.find('td:nth-child(4)').text();
+				const fin = row.find('td:nth-child(5)').text();
+				const dias = row.find('td:nth-child(6)').text();
+				const pago = row.find('td:nth-child(7)').text();
+				
+				console.log(prestamoId);
+
+
+				$('#modalPrestamoNombre').text(nombre);
+				$('#modalPrestamoMonto').text(monto);
+				$('#modalPrestamoInicio').text(inicio);
+				$('#modalPrestamoFin').text(fin);
+				$('#modalPrestamoDias').text(dias);
+				$('#modalPrestamoPago').text(pago);
+				$('#idPrestamoParaAprobar').val(prestamoId);
+				$('#idPrestamoParaDesaprobar').val(prestamoId);
+					
+
+				$('#verPrestamoModal').modal('show');
+			});
+
+			$('#btnaprobar').on('click', function () {
+				$('#confirmarAprobacionModal').modal('show');
+			});
+			$('#btndesaprobar').on('click', function () {
+				$('#confirmarDesaprobacionModal').modal('show');
+			});
+
+
+		});
 	</script>
-	
+
 </body>
+
 </html>

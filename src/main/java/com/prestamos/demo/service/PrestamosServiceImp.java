@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -95,6 +96,18 @@ public class PrestamosServiceImp implements PrestamosService {
 	@Override
 	public Prestamos obtenerId(int id) {
 		return repoP.findById(id).orElse(null);
+	}
+
+	@Override
+	public Prestamos actualizarEstado(int id, String nuevoEstado) {
+		 Optional<Prestamos> optionalPrestamo = repoP.findById(id);
+	        if (optionalPrestamo.isPresent()) {
+	            Prestamos prestamo = optionalPrestamo.get();
+	            prestamo.setEstado(nuevoEstado);
+	            return repoP.save(prestamo);
+	        } else {
+	            throw new RuntimeException("El préstamo con ID " + id + " no fue encontrado.");
+	        }
 	}
 
 

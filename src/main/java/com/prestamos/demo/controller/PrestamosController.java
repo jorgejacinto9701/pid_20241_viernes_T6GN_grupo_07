@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.prestamos.demo.entity.Prestamos;
@@ -128,16 +129,16 @@ public class PrestamosController {
 	    }
 	}
 	
-	@GetMapping("/get-prestamo/{id}")
-	@ResponseBody
-	public ResponseEntity<?> getPrestamo(@PathVariable("id") Integer id) {
-	    Prestamos prestamo = pres.obtenerId(id);
-	    
-	    if (prestamo != null) {
-	        return ResponseEntity.ok(prestamo);
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
-	}
+	@PostMapping("/aprobar")
+    public String aprobarPrestamo(Integer id) {
+        pres.actualizarEstado(id, "APROBADO");
+        return "redirect:/filtrarRegistro";
+    }
+    
+    @PostMapping("/desaprobar")
+    public String desaprobarPrestamo(Integer id) {
+        pres.actualizarEstado(id, "RECHAZADO");
+        return "redirect:/filtrarRegistro";
+    }
 
 }

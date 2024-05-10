@@ -14,5 +14,6 @@ public interface PrestamosService extends UserDetailsService{
 	List<Prestamos> listarPrestamos(Usuarios usu);
 	List<Prestamos>listarPrestamosPrestamista(Usuarios usu);
 	Prestamos obtenerId(int id);
+	Prestamos actualizarEstado(int id, String nuevoEstado);
 
 }
