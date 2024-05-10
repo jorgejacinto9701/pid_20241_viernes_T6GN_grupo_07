@@ -12,5 +12,7 @@ public interface PrestamosService extends UserDetailsService{
 	
 	Prestamos save(Prestamos objPrestamo, UserDetails currentUser );
 	List<Prestamos> listarPrestamos(Usuarios usu);
+	List<Prestamos>listarPrestamosPrestamista(Usuarios usu);
+	Prestamos obtenerId(int id);
 
 }

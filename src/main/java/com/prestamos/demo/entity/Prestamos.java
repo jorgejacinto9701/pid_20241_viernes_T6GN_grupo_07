@@ -1,4 +1,5 @@
 package com.prestamos.demo.entity;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,9 +59,12 @@ public class Prestamos {
 	
 	@Column(name="estado")
 	private String estado;
+	
+	@Column(name="fecha_registro")
+    private LocalDate fecha_registro;
 
 	public Prestamos(Double monto, Date fecha_inicio, Date fecha_fin, int dias, Double pagodiario, Usuarios idUsuario,
-			String estado) {
+			String estado, LocalDate fecha_registro) {
 		super();
 		this.monto = monto;
 		this.fecha_inicio = fecha_inicio;
@@ -69,5 +73,8 @@ public class Prestamos {
 		this.pagodiario = pagodiario;
 		this.idUsuario = idUsuario;
 		this.estado = estado;
-	}
+		this.fecha_registro = fecha_registro;
+	} 
+
+
 }
