@@ -1,7 +1,9 @@
 package com.prestamos.demo.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,6 +44,18 @@ public class JefePrestamistaController {
 
 	@Autowired
 	private DistritoService disService;
+	
+	
+	@Autowired
+    private UsuariosRepository usuariosRepository;
+
+    @GetMapping("/verificar-correo")
+    public Map<String, Boolean> verificarCorreo(@RequestParam String correo) {
+        Map<String, Boolean> response = new HashMap<>();
+        boolean existe = usuariosRepository.existsByCorreo(correo);
+        response.put("existe", existe);
+        return response;
+    }
 
 	@ModelAttribute("usuarioJP")
 	public Usuarios usuario() {
