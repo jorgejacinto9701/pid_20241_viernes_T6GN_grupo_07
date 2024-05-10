@@ -2,6 +2,7 @@ package com.prestamos.demo.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,11 +21,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.prestamos.demo.entity.Cuotas;
 import com.prestamos.demo.entity.Prestamos;
 import com.prestamos.demo.entity.Usuarios;
 import com.prestamos.demo.repository.PrestamosRepository;
 import com.prestamos.demo.repository.UsuariosRepository;
+import com.prestamos.demo.service.CuotasService;
 import com.prestamos.demo.service.PrestamosService;
+import com.prestamos.demo.service.UsuariosService;
 
 
 
@@ -37,6 +41,12 @@ public class PrestamosController {
 	
 	@Autowired
 	private PrestamosService pres;
+	
+	@Autowired
+	private CuotasService cuos;
+	
+	@Autowired
+	private UsuariosService ususerv;
 	
 	@Autowired
 	private PrestamosRepository prerepo;
@@ -132,6 +142,26 @@ public class PrestamosController {
 	@PostMapping("/aprobar")
     public String aprobarPrestamo(Integer id) {
         pres.actualizarEstado(id, "APROBADO");
+        
+     // Obtener el préstamo por ID
+        Prestamos prestamo = pres.obtenerId(id);
+        
+        // Calcular la cantidad de cuotas necesarias
+        int cantidadCuotas = prestamo.getDias();
+        
+        // Obtener el usuario que creó el préstamo
+        Usuarios usuario = prestamo.getIdUsuario();
+        
+        // Guardar las cuotas en la base de datos
+        for (int i = 0; i < cantidadCuotas; i++) {
+            Cuotas cuota = new Cuotas();
+            cuota.setPrestamo(prestamo);
+            cuota.setUsuario(usuario);
+            // Otros campos de cuota como monto, estado, etc.
+            
+            // Guardar la cuota en la base de datos
+            cuos.save(cuota);
+        }
         return "redirect:/filtrarRegistro";
     }
     
@@ -139,6 +169,25 @@ public class PrestamosController {
     public String desaprobarPrestamo(Integer id) {
         pres.actualizarEstado(id, "RECHAZADO");
         return "redirect:/filtrarRegistro";
+    }
+    
+    @ModelAttribute("prestatarios")
+    public List<Usuarios> getPrestatarios() {
+        // Obtener el usuario actualmente autenticado
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails currentUser = (UserDetails) authentication.getPrincipal();
+
+        // Buscar al usuario inversionista actual en la base de datos
+        Usuarios usuarioInversionista = usurepo.findByCorreo(currentUser.getUsername());
+
+        // Verificar si se encontró al usuario inversionista
+        if (usuarioInversionista != null) {
+            // Obtener la lista de usuarios que fueron registrados por el usuario inversionista actual
+            return ususerv.listJefePrestamista(usuarioInversionista);
+        } else {
+            // Si el usuario inversionista no fue encontrado, retornar una lista vacía
+            return Collections.emptyList();
+        }
     }
 
 }

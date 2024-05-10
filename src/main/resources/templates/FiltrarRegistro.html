@@ -184,8 +184,12 @@
 
 	<h1>Prestario</h1>
 	<div class="prestario-info">
-		<h2>Prestario:</h2>
-		<input type="text" id="prestario-name" name="prestario-name" placeholder="Nombre y Apellido">
+	    <h2>Prestario:</h2>
+	    <select id="prestario-name" name="prestario-name" class="form-select">
+	        <option value="">Selecciona un prestatario</option>
+	        <!-- Iterar sobre los prestatarios -->
+	        <option th:each="prestatario : ${prestatarios}" th:value="${prestatario.id}" th:text="${prestatario.nombre + ' ' + prestatario.apellido}"></option>
+	    </select>
 	</div>
 	<div class="filter-container">
 		<label for="start-date">Fecha Solicitud (Desde):</label>
@@ -194,7 +198,7 @@
 		<input type="date" id="end-date" name="end-date">
 		<button id="filter-btn">Filtrar</button>
 	</div>
-	<table>
+	<table id="prestamo-table">
 		<thead>
 			<tr>
 				<th class="text-center">Id</th>
@@ -209,7 +213,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="prest : ${prestamos}">
+			<tr th:each="prest : ${prestamos}" 	data-prestatario-id="${prest.idUsuario.id}">
 				<th scope="row" th:text="${prest.id}"></th>
 				<td class="text-center" th:text="${prest.idUsuario.nombre + ' ' + prest.idUsuario.apellido}"></td>
 				<td class="text-center" th:text="${prest.monto}"></td>
@@ -334,13 +338,49 @@
 			});
 
 			$('#btnaprobar').on('click', function () {
+				
+				// Obtener el ID del préstamo de la cuota
+				    var prestamoId = $('#idPrestamoParaAprobar').val();
+				    
+				    // Establecer el valor del campo oculto en el formulario
+				    $('#idPrestamoParaAprobar').val(prestamoId);
+				    
+				    // Enviar el formulario
+				    $('#formAprobarPrestamo').submit();
+				
 				$('#confirmarAprobacionModal').modal('show');
 			});
 			$('#btndesaprobar').on('click', function () {
 				$('#confirmarDesaprobacionModal').modal('show');
 			});
 
-
+			// Obtener el select y la tabla
+			const select = document.getElementById("prestario-name");
+			const table = document.getElementById("prestamo-table");
+			
+			// Escuchar el evento de cambio en el select
+			select.addEventListener("change", function() {
+			    // Obtener el valor seleccionado (ID del prestatario)
+			    const prestatarioId = select.value;
+			
+			    // Obtener todas las filas de la tabla
+			    const rows = table.getElementsByTagName("tr");
+			
+			    // Iterar sobre las filas y mostrar u ocultar según el prestatario seleccionado
+			    for (let i = 0; i < rows.length; i++) {
+			        const row = rows[i];
+			        // Obtener el ID del prestatario asociado a la fila
+			        const rowPrestatarioId = row.getAttribute("data-prestatario-id");
+					console.log(rowPrestatarioId);
+			        // Si el ID del prestatario de la fila coincide con el prestatario seleccionado o no hay prestatario seleccionado, mostrar la fila, de lo contrario, ocultarla
+			        if (!prestatarioId || rowPrestatarioId === prestatarioId) {
+			            row.style.display = "";
+			        } else {
+			            row.style.display = "none";
+			        }
+			    }
+			});
+			
 		});
 	</script>
 
