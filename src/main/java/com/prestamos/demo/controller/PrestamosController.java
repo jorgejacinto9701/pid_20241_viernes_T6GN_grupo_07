@@ -189,5 +189,17 @@ public class PrestamosController {
             return Collections.emptyList();
         }
     }
+    
+    @GetMapping("/cuotas")
+    public String obtenerCuotasPorPrestamo(Model model,@PathVariable Integer id) {
+        // Aquí obtén el objeto Prestamos correspondiente al ID proporcionado
+        Prestamos prestamo = pres.obtenerId(id);
+        
+        // Llama al método listarCuotas del servicio CuotasService pasando el objeto Prestamos
+        List<Cuotas> cuotas = cuos.listarCuotas(prestamo);
+        model.addAttribute("cuotas", cuotas);
+        
+        return "listaPrestamos";
+    }
 
 }

@@ -307,82 +307,53 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 		</script>
-	<script>
-		// Espera a que el DOM esté completamente cargado
-		$(document).ready(function () {
-			$('.ver').on('click', function () {
-				const row = $(this).closest('tr');
-
-				const prestamoId = row.find('th[scope="row"]').text();
-				const nombre = row.find('td:nth-child(2)').text();
-				const monto = row.find('td:nth-child(3)').text();
-				const inicio = row.find('td:nth-child(4)').text();
-				const fin = row.find('td:nth-child(5)').text();
-				const dias = row.find('td:nth-child(6)').text();
-				const pago = row.find('td:nth-child(7)').text();
+		<script>
+		    // Espera a que el DOM esté completamente cargado
+		    $(document).ready(function () {
 				
-				console.log(prestamoId);
-
-
-				$('#modalPrestamoNombre').text(nombre);
-				$('#modalPrestamoMonto').text(monto);
-				$('#modalPrestamoInicio').text(inicio);
-				$('#modalPrestamoFin').text(fin);
-				$('#modalPrestamoDias').text(dias);
-				$('#modalPrestamoPago').text(pago);
-				$('#idPrestamoParaAprobar').val(prestamoId);
-				$('#idPrestamoParaDesaprobar').val(prestamoId);
-					
-
-				$('#verPrestamoModal').modal('show');
-			});
-
-			$('#btnaprobar').on('click', function () {
 				
-				// Obtener el ID del préstamo de la cuota
-				    var prestamoId = $('#idPrestamoParaAprobar').val();
-				    
-				    // Establecer el valor del campo oculto en el formulario
-				    $('#idPrestamoParaAprobar').val(prestamoId);
-				    
-				    // Enviar el formulario
-				    $('#formAprobarPrestamo').submit();
+				//FILTRO
 				
-				$('#confirmarAprobacionModal').modal('show');
-			});
-			$('#btndesaprobar').on('click', function () {
-				$('#confirmarDesaprobacionModal').modal('show');
-			});
-
-			// Obtener el select y la tabla
-			const select = document.getElementById("prestario-name");
-			const table = document.getElementById("prestamo-table");
-			
-			// Escuchar el evento de cambio en el select
-			select.addEventListener("change", function() {
-			    // Obtener el valor seleccionado (ID del prestatario)
-			    const prestatarioId = select.value;
-			
-			    // Obtener todas las filas de la tabla
-			    const rows = table.getElementsByTagName("tr");
-			
-			    // Iterar sobre las filas y mostrar u ocultar según el prestatario seleccionado
-			    for (let i = 0; i < rows.length; i++) {
-			        const row = rows[i];
-			        // Obtener el ID del prestatario asociado a la fila
-			        const rowPrestatarioId = row.getAttribute("data-prestatario-id");
-					console.log(rowPrestatarioId);
-			        // Si el ID del prestatario de la fila coincide con el prestatario seleccionado o no hay prestatario seleccionado, mostrar la fila, de lo contrario, ocultarla
-			        if (!prestatarioId || rowPrestatarioId === prestatarioId) {
-			            row.style.display = "";
-			        } else {
-			            row.style.display = "none";
-			        }
-			    }
-			});
-			
-		});
-	</script>
+		        $('.ver').on('click', function () {
+		            var row = $(this).closest('tr');
+		
+		            var prestamoId = row.find('th[scope="row"]').text();
+		            const nombre = row.find('td:nth-child(2)').text();
+		            const monto = row.find('td:nth-child(3)').text();
+		            const inicio = row.find('td:nth-child(4)').text();
+		            const fin = row.find('td:nth-child(5)').text();
+		            const dias = row.find('td:nth-child(6)').text();
+		            const pago = row.find('td:nth-child(7)').text();
+		
+		            console.log(prestamoId);
+		
+		            $('#modalPrestamoNombre').text(nombre);
+		            $('#modalPrestamoMonto').text(monto);
+		            $('#modalPrestamoInicio').text(inicio);
+		            $('#modalPrestamoFin').text(fin);
+		            $('#modalPrestamoDias').text(dias);
+		            $('#modalPrestamoPago').text(pago);
+		            $('#idPrestamoParaAprobar').val(prestamoId);
+		            $('#idPrestamoParaDesaprobar').val(prestamoId);
+		
+		            $('#verPrestamoModal').modal('show');
+		        });
+		
+		        $('#btnaprobar').on('click', function () {
+		            var prestamoId = $('#idPrestamoParaAprobar').val();
+		
+		            $('#idPrestamoParaAprobar').val(prestamoId);
+		
+		            $('#formAprobarPrestamo').submit();
+		
+		            $('#confirmarAprobacionModal').modal('show');
+		        });
+		
+		        $('#btndesaprobar').on('click', function () {
+		            $('#confirmarDesaprobacionModal').modal('show');
+		        });
+		    });
+		</script>
 
 </body>
 

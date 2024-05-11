@@ -1,5 +1,7 @@
 package com.prestamos.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,6 +48,15 @@ public class CuotasServiceImp implements CuotasService {
 	    
 	    // Guardar la cuota
 	    return cuorepo.save(objCuotas);
+	}
+
+	@Override
+	public List<Cuotas> listarCuotas(Prestamos prestamos) {
+		// Utiliza el método findByPrestamo() del repositorio para obtener las cuotas
+        List<Cuotas> cuotas = cuorepo.findByPrestamo(prestamos);
+        
+        return cuotas;
+		
 	}
 	
 
