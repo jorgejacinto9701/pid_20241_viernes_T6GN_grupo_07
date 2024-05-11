@@ -14,6 +14,9 @@
 
 	<!-- TAILWIND -->
 	<script src="https://cdn.tailwindcss.com"></script>
+	
+	<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.min.css">
 
 
 
@@ -170,25 +173,24 @@
 						Password</label>
 				</div>
 			</div>
-
 			<button type="submit"
-				class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar
+				class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="btn_guardar">Registrar
 				Jefe Prestamista</button>
 		</form>
 	</div>
 	<!-- Fin de Registro -->
 	<!-- Mensaje de registro exitoso-->
 	
-	<div class="container" th:if="${param.success}">
+	<!-- <div class="container" th:if="${param.success}">
 		<div class="alert alert-info">
 			Registro exitoso :)
 		</div>
-	</div> 
+	</div> -->
 
 	<div class="alert alert-danger alert-dismissible fade show text-center" th:if="${unsuccess} != null" role="alert">
 		<label th:text="${unsuccess}"></label>
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
+	</div> 
 	<!-- Fin de mensaje -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -208,39 +210,86 @@
 		});
 
 	</script>
-	<script>
-	    function validarFormulario() {
-	        var nombre = document.getElementById("nombre").value;
-	        var apellido = document.getElementById("apellido").value;
-	        var dni = document.getElementById("dni").value;
-	        var telefono = document.getElementById("telefono").value;
-	        var correo = document.getElementById("correo").value;
-	
-	        // Validar formato de correo electrónico
-	        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	        if (!emailRegex.test(correo)) {
-	            alert("Por favor, introduce un correo electrónico válido.");
-	            return false;
-	        }
-	
-	        // Validar longitud del DNI
-	        if (dni.length !== 8) {
-	            alert("El DNI debe tener 8 dígitos.");
-	            return false;
-	        }
-	
-	        // Validar longitud del número de teléfono
-	        if (telefono.length !== 9) {
-	            alert("El número de teléfono debe tener 9 dígitos.");
-	            return false;
-	        }
-	
-	        // Si todas las validaciones pasan, el formulario se enviará al servidor
-	        return true;
-	    }
-	</script>
-	<!--VALIDACION-->
-	<script src="validaciones.js" ></script>
+	 <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.min.js"></script>
+    <script>
+       function validarFormulario() {
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var dni = document.getElementById("dni").value;
+    var telefono = document.getElementById("telefono").value;
+    var correo = document.getElementById("correo").value;
+
+    // Validar formato de correo electrónico
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correo)) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, introduce un correo electrónico válido.',
+            icon: 'error',
+            timer: 4000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+        return false;
+    }
+
+    // Validar longitud del DNI
+    if (dni.length !== 8) {
+        Swal.fire({
+            title: 'Error',
+            text: 'El DNI debe tener 8 dígitos.',
+            icon: 'error',
+            timer: 4000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+        return false;
+    }
+
+    // Validar longitud del número de teléfono
+    if (telefono.length !== 9) {
+        Swal.fire({
+            title: 'Error',
+            text: 'El número de teléfono debe tener 9 dígitos.',
+            icon: 'error',
+            timer: 4000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
+        return false;
+    }
+
+    // Verificar si el correo electrónico ya existe en la base de datos
+    fetch('/verificar-correo?correo=' + correo)
+        .then(response => response.json())
+        .then(data => {
+            if (data.existe) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'El correo electrónico ya está registrado.',
+                    icon: 'error',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                });
+            } else {
+                Swal.fire({
+                    title: 'Éxito',
+                    text: 'Jefe Prestamista Registrado Existosamente.',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(function () {
+                    document.getElementById("registroForm").submit();
+                });
+            }
+        });
+
+    return false;
+}
+</script>
 </body>
 
 </html>
