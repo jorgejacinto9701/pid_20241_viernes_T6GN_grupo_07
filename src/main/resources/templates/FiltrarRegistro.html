@@ -184,12 +184,13 @@
 
 	<h1>Prestario</h1>
 	<div class="prestario-info">
-	    <h2>Prestario:</h2>
-	    <select id="prestario-name" name="prestario-name" class="form-select">
-	        <option value="">Selecciona un prestatario</option>
-	        <!-- Iterar sobre los prestatarios -->
-	        <option th:each="prestatario : ${prestatarios}" th:value="${prestatario.id}" th:text="${prestatario.nombre + ' ' + prestatario.apellido}"></option>
-	    </select>
+		<h2>Prestario:</h2>
+		<select id="prestario-name" name="prestario-name" class="form-select">
+			<option value="">Selecciona un prestatario</option>
+			<!-- Iterar sobre los prestatarios -->
+			<option th:each="prestatario : ${prestatarios}" th:value="${prestatario.id}"
+				th:text="${prestatario.nombre + ' ' + prestatario.apellido}"></option>
+		</select>
 	</div>
 	<div class="filter-container">
 		<label for="start-date">Fecha Solicitud (Desde):</label>
@@ -213,7 +214,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="prest : ${prestamos}" 	data-prestatario-id="${prest.idUsuario.id}">
+			<tr th:each="prest : ${prestamos}" data-prestatario-id="${prest.idUsuario.id}">
 				<th scope="row" th:text="${prest.id}"></th>
 				<td class="text-center" th:text="${prest.idUsuario.nombre + ' ' + prest.idUsuario.apellido}"></td>
 				<td class="text-center" th:text="${prest.monto}"></td>
@@ -256,29 +257,32 @@
 		</div>
 	</div>
 	<!-- Fin de Modal -->
-	
+
 	<!-- Modal para Confirmar Aprobación -->
-		<div class="modal fade" id="confirmarAprobacionModal" tabindex="-1" role="dialog" aria-labelledby="confirmarAprobacionLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="confirmarAprobacionLabel">Aprobar Prestamo</h5>
-		      </div>
-		      <div class="modal-body">
-		        ¿Estás seguro de que deseas aprobar el crédito?
-		      </div>
-		      <div class="modal-footer">		  
-			  <!-- Formulario para Desaprobar Prestamo -->
-			  <form th:action="@{/aprobar}" method="post" id="formAprobarPrestamo">
-			  <input type="hidden" name="id" id="idPrestamoParaAprobar"> <!-- Campo oculto para el ID del préstamo -->
-		      <button type="submit" class="btn btn-success" id="confirmarAprobacion" form="formAprobarPrestamo">Aceptar</button>		  
-			  </form>
-		        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-		      </div>
-		    </div>
-		  </div>
+	<div class="modal fade" id="confirmarAprobacionModal" tabindex="-1" role="dialog"
+		aria-labelledby="confirmarAprobacionLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="confirmarAprobacionLabel">Aprobar Prestamo</h5>
+				</div>
+				<div class="modal-body">
+					¿Estás seguro de que deseas aprobar el crédito?
+				</div>
+				<div class="modal-footer">
+					<!-- Formulario para Desaprobar Prestamo -->
+					<form th:action="@{/aprobar}" method="post" id="formAprobarPrestamo">
+						<input type="hidden" name="id" id="idPrestamoParaAprobar">
+						<!-- Campo oculto para el ID del préstamo -->
+						<button type="submit" class="btn btn-success" id="confirmarAprobacion"
+							form="formAprobarPrestamo">Aceptar</button>
+					</form>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
 		</div>
-	
+	</div>
+
 	<!-- Modal para Confirmar Desaprobación -->
 	<div class="modal fade" id="confirmarDesaprobacionModal" tabindex="-1" role="dialog"
 		aria-labelledby="confirmarDesaprobacionLabel" aria-hidden="true">
@@ -307,13 +311,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
 		</script>
-<<<<<<< HEAD
-		<script>
-		    // Espera a que el DOM esté completamente cargado
-		    $(document).ready(function () {
-=======
+
 	<script>
-		// Espera a que el DOM esté completamente cargado
 		$(document).ready(function () {
 			
 			// Obtener referencia al select y la tabla
@@ -344,61 +343,40 @@
 								       });
 								   });
 			
-			$('.ver').on('click', function () {
-				const row = $(this).closest('tr');
-
-				const prestamoId = row.find('th[scope="row"]').text();
-				const nombre = row.find('td:nth-child(2)').text();
-				const monto = row.find('td:nth-child(3)').text();
-				const inicio = row.find('td:nth-child(4)').text();
-				const fin = row.find('td:nth-child(5)').text();
-				const dias = row.find('td:nth-child(6)').text();
-				const pago = row.find('td:nth-child(7)').text();
->>>>>>> branch 'main' of https://github.com/jorgejacinto9701/pid_20241_viernes_T6GN_grupo_07.git
-				
-				
-				//FILTRO
-				
-		        $('.ver').on('click', function () {
-		            var row = $(this).closest('tr');
+		    $('.ver').on('click', function () {
+		        const row = $(this).closest('tr');
+		        const prestamoId = row.find('th[scope="row"]').text();
+		        const nombre = row.find('td:nth-child(2)').text();
+		        const monto = row.find('td:nth-child(3)').text();
+		        const inicio = row.find('td:nth-child(4)').text();
+		        const fin = row.find('td:nth-child(5)').text();
+		        const dias = row.find('td:nth-child(6)').text();
+		        const pago = row.find('td:nth-child(7)').text();
 		
-		            var prestamoId = row.find('th[scope="row"]').text();
-		            const nombre = row.find('td:nth-child(2)').text();
-		            const monto = row.find('td:nth-child(3)').text();
-		            const inicio = row.find('td:nth-child(4)').text();
-		            const fin = row.find('td:nth-child(5)').text();
-		            const dias = row.find('td:nth-child(6)').text();
-		            const pago = row.find('td:nth-child(7)').text();
+		        $('#modalPrestamoNombre').text(nombre);
+		        $('#modalPrestamoMonto').text(monto);
+		        $('#modalPrestamoInicio').text(inicio);
+		        $('#modalPrestamoFin').text(fin);
+		        $('#modalPrestamoDias').text(dias);
+		        $('#modalPrestamoPago').text(pago);
+		        $('#idPrestamoParaAprobar').val(prestamoId);
+		        $('#idPrestamoParaDesaprobar').val(prestamoId);
 		
-		            console.log(prestamoId);
-		
-		            $('#modalPrestamoNombre').text(nombre);
-		            $('#modalPrestamoMonto').text(monto);
-		            $('#modalPrestamoInicio').text(inicio);
-		            $('#modalPrestamoFin').text(fin);
-		            $('#modalPrestamoDias').text(dias);
-		            $('#modalPrestamoPago').text(pago);
-		            $('#idPrestamoParaAprobar').val(prestamoId);
-		            $('#idPrestamoParaDesaprobar').val(prestamoId);
-		
-		            $('#verPrestamoModal').modal('show');
-		        });
-		
-		        $('#btnaprobar').on('click', function () {
-		            var prestamoId = $('#idPrestamoParaAprobar').val();
-		
-		            $('#idPrestamoParaAprobar').val(prestamoId);
-		
-		            $('#formAprobarPrestamo').submit();
-		
-		            $('#confirmarAprobacionModal').modal('show');
-		        });
-		
-		        $('#btndesaprobar').on('click', function () {
-		            $('#confirmarDesaprobacionModal').modal('show');
-		        });
+		        $('#verPrestamoModal').modal('show');
 		    });
-		</script>
+		
+		    $('#btnaprobar').on('click', function () {
+		        var prestamoId = $('#idPrestamoParaAprobar').val();
+		        $('#idPrestamoParaAprobar').val(prestamoId);
+		        $('#formAprobarPrestamo').submit();
+		        $('#confirmarAprobacionModal').modal('show');
+		    });
+		
+		    $('#btndesaprobar').on('click', function () {
+		        $('#confirmarDesaprobacionModal').modal('show');
+		    });
+		});
+	</script>
 
 </body>
 
