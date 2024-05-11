@@ -310,6 +310,35 @@
 	<script>
 		// Espera a que el DOM esté completamente cargado
 		$(document).ready(function () {
+			
+			// Obtener referencia al select y la tabla
+							       var selectPrestatario = document.getElementById('prestario-name');
+							       var tablaPrestamos = document.getElementById('prestamo-table');
+							
+							       // Agregar evento de cambio al select
+								   selectPrestatario.addEventListener('change', function() {
+								       var seleccionado = selectPrestatario.options[selectPrestatario.selectedIndex].text.trim().toLowerCase();
+								       // Iterar sobre las filas de la tabla
+								       Array.from(tablaPrestamos.getElementsByTagName('tr')).forEach(function(row, index) {
+								           if (index === 0) {
+								               // Saltar la primera fila que contiene los encabezados de la tabla
+								               return;
+								           }
+								           if (seleccionado === '' || seleccionado === 'selecciona un prestatario') {
+								               // Mostrar todas las filas cuando se selecciona la opción por defecto
+								               row.style.display = '';
+								           } else {
+								               var nombreApellido = row.cells[1].textContent.trim().toLowerCase();
+								               // Mostrar o ocultar la fila dependiendo de si coincide con la selección
+								               if (nombreApellido.includes(seleccionado)) {
+								                   row.style.display = '';
+								               } else {
+								                   row.style.display = 'none';
+								               }
+								           }
+								       });
+								   });
+			
 			$('.ver').on('click', function () {
 				const row = $(this).closest('tr');
 
